@@ -6,6 +6,7 @@ module Controllers {
         public error: Models.Error;
         public game: Models.Game;
         public board: Models.Board;
+        public score: number[];
 
         constructor(
             private $scope: Scopes.IAppScope,
@@ -88,8 +89,10 @@ module Controllers {
                 this.game.SelectedPiece = null;
                 this.board.IsSolved = this.board.isSolved();
                 if (this.board.IsSolved) {
-                    console.log("solved");
-                    console.log("Score" + this.scoreKeeper.ComputeScore(this.game, this.board));
+                    this.score = new Array<number>();
+                    var res = this.scoreKeeper.ComputeScore(this.game, this.board);
+                    for (var i = 0; i < res; i++)
+                        this.score.push(i);
                 }
             }
         }
