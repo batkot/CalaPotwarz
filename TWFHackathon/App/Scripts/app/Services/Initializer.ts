@@ -8,7 +8,9 @@
         };
 
         createGame(successCallback: Function, errorCallback: Function): void {
-            this.$http.get('/api/Game').
+            var catCount = $("#categories").attr('count');
+            console.log(catCount);
+            this.$http.get('/api/Game/'+catCount).
                 then(function (response) {
                 //tu se przejdz na swoj obiekt
                 console.log(response.data);

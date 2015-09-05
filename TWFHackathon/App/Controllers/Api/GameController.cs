@@ -7,15 +7,18 @@ namespace App.Controllers.Api
     public class GameController : ApiController
     {
         private readonly ICanCreateGame _gameCreator;
+        private readonly ICanDrawDominoTile _tileGenerator;
 
-        public GameController(ICanCreateGame gameCreator)
+        public GameController(ICanCreateGame gameCreator, ICanDrawDominoTile tileGen)
         {
             _gameCreator = gameCreator;
+            _tileGenerator = tileGen;
         }
 
-        public GameModel Get()
+        public GameModel Get(int categoryCount)
         {
-            return _gameCreator.Create(5,6,5);
+            _tileGenerator.CategoryLimit = categoryCount;
+            return _gameCreator.Create(5, 6, 7, _tileGenerator);
         }
    } 
 }
