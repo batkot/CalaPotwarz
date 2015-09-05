@@ -34,7 +34,7 @@
             var firstTile: Models.DominoTile = changeTileOrder ? piece.secondTile : piece.firstTile;
             var secondTile: Models.DominoTile = changeTileOrder ? piece.firstTile : piece.secondTile;
 
-            return new Models.DominoPiece(firstTile, secondTile, newOrientation);
+            return new Models.DominoPiece(firstTile, secondTile, newOrientation, piece.Id);
         }
     }
 }
