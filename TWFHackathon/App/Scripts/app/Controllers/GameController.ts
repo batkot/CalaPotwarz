@@ -6,6 +6,7 @@ module Controllers {
         public error: Models.Error;
         public game: Models.Game;
         public board: Models.Board;
+        public size: string;
 
         constructor(
             private $scope: Scopes.IAppScope,

@@ -5,30 +5,32 @@
     <div class="menu-container vcenter">
         <div class="row menu-toolbar">
             <div class="col-md-4">
-                <a href="@Url.Action("Settings", "Home")">
-                    <div class="menu-option menuItemLoaded">
-                        <i class="fa fa-cogs fa-5x"></i>
-                        <h2>Ustawienia</h2>
-                        <h5>Skonfiguruj grę</h5>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="@Url.Action("Game", "Home")">
+                <a href="@Url.Action("Game", "Home", new { Size = "S" })">
                     <div class="menu-option menuItemLoaded">
                         <i class="fa fa-play fa-5x"></i>
 
-                        <h2>Nowa gra</h2>
-                        <h5>Rozpocznij nową grę</h5>
+                        <h2>Mała plansza</h2>
+                        <h5>Rozpocznij nową grę na małej planszy</h5>
                     </div>
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="@Url.Action("About", "Home")">
+                <a href="@Url.Action("Game", "Home", new { Size = "M" })">
                     <div class="menu-option menuItemLoaded">
-                        <i class="fa fa-info fa-5x"></i>
-                        <h2>O grze</h2>
-                        <h5>Skorzystaj z pomocy</h5>
+                        <i class="fa fa-play fa-5x"></i>
+
+                        <h2>Średnia plansza</h2>
+                        <h5>Rozpocznij nową grę na średniej planszy</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="@Url.Action("Game", "Home", new { Size = "L" })">
+                    <div class="menu-option menuItemLoaded">
+                        <i class="fa fa-play fa-5x"></i>
+
+                        <h2>Duża plansza</h2>
+                        <h5>Rozpocznij nową grę na dużej planszy</h5>
                     </div>
                 </a>
             </div>
