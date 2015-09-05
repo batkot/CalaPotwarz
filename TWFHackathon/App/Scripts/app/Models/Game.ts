@@ -13,17 +13,17 @@
 
     export class Board {
         constructor(private _height: number, private _width: number) {
-            this._cells = new Array<Array<BoardCell>>();
+            this.Cells = new Array<Array<BoardCell>>();
             for (var i = 0; i < _width; i++) {
                 var column = new Array<BoardCell>();
-                this._cells.push(column);
+                this.Cells.push(column);
                 for (var j = 0; j < _height; j++) {
                     column.push(new BoardCell(i, j));
                 }
             }
         }
 
-        private _cells: Array<Array<BoardCell>>;
+        public Cells: Array<Array<BoardCell>>;
 
         public getTile(x: number, y: number): DominoTile{
             var cell = this.Cells[x][y];
