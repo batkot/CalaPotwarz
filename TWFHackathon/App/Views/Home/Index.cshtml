@@ -1,18 +1,37 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Domino";
 }
+<div class="menu-wrapper">
+    <div class="menu-container vcenter">
+        <div class="row menu-toolbar">
+            <div class="col-md-4">
+                <a href="@Url.Action("Settings", "Home")">
+                    <div class="menu-option menuItemLoaded">
+                        <i class="fa fa-play fa-5x"></i>
+                        <h2>Ustawienia</h2>
+                        <h5>Skonfiguruj grę</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="@Url.Action("Game", "Home")">
+                    <div class="menu-option menuItemLoaded">
+                        <i class="fa fa-play fa-5x"></i>
 
-<div ng-app="app" background="green">
-    <div ng-controller="shellController as sc">
-        {{ sc.message }}
+                        <h2>Nowa gra</h2>
+                        <h5>Rozpocznij nową grę</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="@Url.Action("About", "Home")">
+                    <div class="menu-option menuItemLoaded">
+                        <i class="fa fa-play fa-5x"></i>
+                        <h2>O grze</h2>
+                        <h5>Skorzystaj z pomocy</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
-
-@section scripts{ 
-    @Scripts.Render("~/bundles/app")
-}
-
-<h2>@ViewBag.Text</h2>
-
-@*<div class="row">
-    <div class="col-md-4">*@

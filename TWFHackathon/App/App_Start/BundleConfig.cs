@@ -26,7 +26,11 @@ namespace App
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-theme.css",
+                      "~/Content/font-awesome.css",
                       "~/Content/animations.css",
+                      "~/Content/common.css",
+                      "~/Content/background.css",
+                      "~/Content/menu.css",
                       "~/Content/app.css",
                       "~/Content/site.css"));
 
