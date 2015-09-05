@@ -3,3 +3,8 @@
     top: 50%;
     transform: translateY(-50%);
 }
+
+.hidden{
+    position: absolute;
+    visibility: collapse;
+}

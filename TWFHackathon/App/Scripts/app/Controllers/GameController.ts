@@ -19,7 +19,6 @@ module Controllers {
 
             this.game = this.$scope.game = game;
             this.board = new Models.Board(game.Width, game.Height);
-            this.game.SelectedPiece = this.game.PlayerPieces[0];
 
             console.log(this.game);
         }
@@ -29,8 +28,17 @@ module Controllers {
             $("#errorModal").modal('show');
         }
 
-        onPieceSelected(id: string) {
-            console.log(id);
+        onPieceSelected(piece: Models.DominoPiece) {
+            console.log(piece);
+            this.game.SelectedPiece = piece;
+            piece.IsHighlighted = true;
+        }
+
+        putPiece(pieceId: string, x: number, y: number): void {
+            var piece = this.game.getPiece(pieceId);
+            if (this.board.putPiece(piece, x, y)) {
+                this.game.removePiece(pieceId);
+            }
         }
     }
 }

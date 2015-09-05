@@ -1,28 +1,20 @@
 ﻿module Services {
     export interface IDominoPiecePlacer {
-        place(board: Models.Board, piece: Models.DominoPiece, firstTileX: number, firstTileY: number) : boolean
+        canPlace(board: Models.Board, piece: Models.DominoPiece, firstTileX: number, firstTileY: number) : boolean
     }
 
     export class DominoPiecePlacer implements IDominoPiecePlacer {
-        public place(board: Models.Board, piece: Models.DominoPiece, firstTileX : number, firstTileY : number): boolean {
-
-            var firstTileOnBoard = board.getTile(firstTileX, firstTileY);
-            if (firstTileOnBoard != null) {
-                return false;
-            }
-            var secondTileX: number = piece.orientation == Models.DominoPieceOrientation.LeftRight ? firstTileX + 1 : firstTileX;
-            var secondTileY: number = piece.orientation == Models.DominoPieceOrientation.LeftRight ? firstTileY : firstTileY + 1;
-            var secondTileOnBoard = board.getTile(secondTileX, secondTileY);
-            if (secondTileOnBoard != null) {
-                return false;
-            }
-
+        public canPlace(board: Models.Board, piece: Models.DominoPiece, firstTileX : number, firstTileY : number): boolean {
+            
             var firstTileNeighbours: any[] = this.getFirstTileNeighboursCoordinates(piece, firstTileX, firstTileY);
             
             if (!this.checkTileNeighbours(board, piece.firstTile, firstTileNeighbours)) {
                 return false;
             }
 
+            var secondTileX: number = piece.orientation == Models.DominoPieceOrientation.LeftRight ? firstTileX + 1 : firstTileX;
+            var secondTileY: number = piece.orientation == Models.DominoPieceOrientation.LeftRight ? firstTileY : firstTileY + 1;
+            
             var secondTileNeighbours: any[] = this.getSecondTileNeighboursCoordinates(piece, secondTileX, secondTileY);
             if (!this.checkTileNeighbours(board, piece.secondTile, secondTileNeighbours)) {
                 return false;

@@ -20,13 +20,13 @@
 }
 
 .domino-piece-horizontal{
-    width: 64px;
-    height: 128px;
+    width: 128px;
+    height: 64px;
 }
 
 .domino-piece-vertical{
-    width: 128px;
-    height: 64px;
+    width: 64px;
+    height: 128px;
 }
 
 .board-inventory .domino-piece {
@@ -40,12 +40,22 @@
     background-position: center;
 }
 
-.board-inventory .domino-piece .upper-domino-tile{
+.domino-piece-vertical .first-domino-tile{
     top: 4px;
     left: 8px;
 }
 
-.board-inventory .domino-piece .bottom-domino-tile{
+.domino-piece-vertical .second-domino-tile{
     bottom: 4px;
     left: 8px;
+}
+
+.domino-piece-horizontal .first-domino-tile{
+    left: 8px;
+    top: 4px;
+}
+
+.domino-piece-horizontal .second-domino-tile{
+    right: 8px;
+    top: 4px;
 }
