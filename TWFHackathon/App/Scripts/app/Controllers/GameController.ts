@@ -31,19 +31,17 @@ module Controllers {
         }
 
         onPieceSelected(piece: Models.DominoPiece) {
-            console.log(piece);
-
             this.game.SelectedPiece = piece;
-            piece.bring();
         }
 
         onSelectedPieceRotatedLeft() {
-            console.log("lewo");
             this.game.SelectedPiece = this.pieceRotator.rotateLeft(this.game.SelectedPiece);
+            console.log(this.game.SelectedPiece);
         }
 
         onSelectedPieceRotatedRight() {
             this.game.SelectedPiece = this.pieceRotator.rotateRight(this.game.SelectedPiece);
+            console.log(this.game.SelectedPiece);
         }
 
         putPiece(pieceId: string, x: number, y: number): void {
