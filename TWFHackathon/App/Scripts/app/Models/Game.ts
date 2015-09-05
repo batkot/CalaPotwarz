@@ -28,11 +28,16 @@
                 }
             }
         }
+
+        public addPiece(piece: DominoPiece): void {
+            this.PlayerPieces.push(piece);
+        }
     }
 
     export class Board {
         constructor(private _height: number, private _width: number, public StartTile: DominoTile, public FinishTile: DominoTile) {
             this.Cells = new Array<Array<BoardCell>>();
+
             for (var i = 0; i < _width; i++) {
                 var column = new Array<BoardCell>();
                 this.Cells.push(column);
@@ -58,7 +63,13 @@
         public IsSolved: boolean;
 
         public getTile(x: number, y: number): DominoTile{
-            if (x >= this._width || y >= this._height)
+            if (x == -1 && y == 0)
+                return this.StartTile;
+
+            if (x == this._height && y == this._width - 1)
+                return this.FinishTile;
+
+            if (x < 0 || y < 0 || x >= this._width || y >= this._height)
                 return null;
             var cell = this.Cells[x][y];
             if (cell == null || cell == undefined || cell.isEmpty())
@@ -95,7 +106,7 @@
                 second_y = y;
             }
 
-            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y)) {
+            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.canPlace(this,piece, x,y)) {
                 this.Cells[x][y].DominoTile = piece.FirstTile;
                 console.log(piece);
                 console.log(this.Cells[x][y].DominoTile);
@@ -123,8 +134,12 @@
                 }
             }
 
-            if (pieceIndex > 0){ 
+            if (pieceIndex > -1){ 
                 var piece: DominoPiece = this.PlacedPieces[pieceIndex].Piece;
+                var firstTile = this.PlacedPieces[pieceIndex].FirstTileCoordinates;
+                this.Cells[firstTile.x][firstTile.y].DominoTile = null;
+                var secondTile = this.PlacedPieces[pieceIndex].SecondTileCoordinates;
+                this.Cells[secondTile.x][secondTile.y].DominoTile = null;
                 this.PlacedPieces.splice(pieceIndex, 1);
                 return piece;
             }
