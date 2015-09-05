@@ -7,7 +7,7 @@
     export class DominoPieceRotator implements IDominoPieceRotator {
 
         public rotateRight(piece: Models.DominoPiece): Models.DominoPiece {
-            if (piece.orientation == Models.DominoPieceOrientation.UpDown) {
+            if (piece.Orientation == Models.DominoPieceOrientation.UpDown) {
                 return this.getRotatedPiece(piece, true);
             }
             else {
@@ -16,7 +16,7 @@
         }
 
         public rotateLeft(piece: Models.DominoPiece): Models.DominoPiece {
-            if (piece.orientation == Models.DominoPieceOrientation.UpDown) {
+            if (piece.Orientation == Models.DominoPieceOrientation.UpDown) {
                 return this.getRotatedPiece(piece, false);
             }
             else {
@@ -27,12 +27,12 @@
         private getRotatedPiece(piece: Models.DominoPiece, changeTileOrder: boolean): Models.DominoPiece {
 
             var newOrientation: Models.DominoPieceOrientation;
-            newOrientation = piece.orientation == Models.DominoPieceOrientation.UpDown
+            newOrientation = piece.Orientation == Models.DominoPieceOrientation.UpDown
                 ? Models.DominoPieceOrientation.LeftRight
                 : Models.DominoPieceOrientation.UpDown;
 
-            var firstTile: Models.DominoTile = changeTileOrder ? piece.secondTile : piece.firstTile;
-            var secondTile: Models.DominoTile = changeTileOrder ? piece.firstTile : piece.secondTile;
+            var firstTile: Models.DominoTile = changeTileOrder ? piece.SecondTile : piece.FirstTile;
+            var secondTile: Models.DominoTile = changeTileOrder ? piece.FirstTile : piece.SecondTile;
 
             return new Models.DominoPiece(firstTile, secondTile, newOrientation, piece.Id);
         }
