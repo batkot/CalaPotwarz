@@ -97,3 +97,19 @@
     width: 64px;
     height: 64px;
 }
+
+.startImage{
+    position: absolute;
+    top: 64px;
+    height: 64px;
+    width: 64px;
+    left: 25%;
+}
+
+.endImage{
+    position: absolute;
+    bottom: 64px;
+    height: 64px;
+    width: 64px;
+    right: 25%;
+}
