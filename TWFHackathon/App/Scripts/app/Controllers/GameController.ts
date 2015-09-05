@@ -4,6 +4,7 @@ module Controllers {
     export class GameController {
         public message: string;
         public error: Models.Error;
+        public game: Models.Game;
 
         constructor(
             private $scope: Scopes.IAppScope,
@@ -13,7 +14,7 @@ module Controllers {
         }
 
         onGameCreated(game: Models.Game): void {
-            this.$scope.game = game;
+            this.game = this.$scope.game = game;
         }
 
         onServerError(error: Models.Error): void {
