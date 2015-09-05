@@ -17,5 +17,10 @@ namespace App.Domino
                 new DominoPiece(new DominoTile("Zavoir", ""), new DominoTile("Letter", "")),
                 new DominoPiece(new DominoTile("People", ""), new DominoTile("Shoe", "")));
         }
+
+        public GameModel Create(int width, int height, int additionalPiecesCount)
+        {
+            return Create();
+        }
     }
 }

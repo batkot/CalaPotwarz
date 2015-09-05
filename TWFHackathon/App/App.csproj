@@ -168,8 +168,12 @@
     <Compile Include="Controllers\Api\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Domino\CategoriesProvider.cs" />
+    <Compile Include="Domino\GameBuilder.cs" />
+    <Compile Include="Domino\ICanFindPath.cs" />
+    <Compile Include="Domino\ICategoriesProvider.cs" />
     <Compile Include="Domino\MockGameCreator.cs" />
     <Compile Include="Domino\ICanCreateGame.cs" />
+    <Compile Include="Domino\SuggestedPath.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
