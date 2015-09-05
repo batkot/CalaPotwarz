@@ -8,3 +8,8 @@
 .board {
     border: 1px solid #fff;
 }
+
+.board-cell{
+    border: 1px solid gray;
+    background: rgba(255, 255, 255, 0.5)
+}
