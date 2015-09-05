@@ -235,6 +235,7 @@
     <Content Include="Content\gfx\pics\shoe\shoe3.png" />
     <Content Include="Content\gfx\pics\shoe\shoe4.png" />
     <Content Include="Content\menu.css" />
+    <Content Include="Content\tile.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

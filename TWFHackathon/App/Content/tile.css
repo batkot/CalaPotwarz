@@ -1,0 +1,33 @@
+﻿.domino-piece{
+    position: relative;
+}
+
+.domino-tile {
+    position: absolute;
+    height: 64px;
+    width: 64px;
+}
+
+.inactive-tile{
+    opacity: 0.75;
+}
+
+.board-inventory .domino-piece{
+    float:left;
+    width: 64px;
+    height: 128px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #fff;
+    margin: 8px;
+    position: relative;
+}
+
+
+
+.board-inventory .domino-piece .upper-domino-tile{
+    top: 0;
+}
+
+.board-inventory .domino-piece .bottom-domino-tile{
+    bottom: 0;
+}
