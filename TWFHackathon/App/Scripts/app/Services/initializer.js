@@ -1,15 +1,22 @@
 var Services;
 (function (Services) {
     var Initializer = (function () {
-        function Initializer() {
+        function Initializer($http) {
+            this.$http = $http;
         }
-        Initializer.prototype.hello = function () {
-            console.log('initializing');
-            return "Hello!";
+        ;
+        Initializer.prototype.requestBoard = function (successCallback, errorCallback) {
+            this.$http.get('/pinus').
+                then(function (response) {
+                console.log('all ok');
+                successCallback(response);
+            }, function (response) {
+                console.log('error occured');
+                errorCallback(response);
+            });
         };
         ;
         return Initializer;
     })();
     Services.Initializer = Initializer;
 })(Services || (Services = {}));
-//# sourceMappingURL=Initializer.js.map
