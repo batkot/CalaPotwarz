@@ -18,6 +18,11 @@ namespace App.Tests.Api
         public void Test()
         {
             var controller = new GameController(_fake);
+
+            var result = controller.Get();
+
+            Assert.NotNull(result);
         }
     }
+
 }
