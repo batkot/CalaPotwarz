@@ -12,7 +12,8 @@ var Controllers;
             console.log(game);
         };
         GameController.prototype.onServerError = function (error) {
-            console.log(error);
+            this.error = error;
+            $("#errorModal").modal('show');
         };
         return GameController;
     })();

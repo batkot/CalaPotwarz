@@ -1,6 +1,9 @@
-﻿module Controllers {
+﻿
+
+module Controllers {
     export class GameController {
         private game: Models.Game;
+        private error: Models.Error;
 
         constructor(
             private $scope: Scopes.IAppScope,
@@ -15,8 +18,10 @@
             console.log(game);
         }
 
-        onServerError(error: any) {
-            console.log(error);
+        onServerError(error: Models.Error) {
+            this.error = error;
+
+            $("#errorModal").modal('show');
         }
     }
 }
