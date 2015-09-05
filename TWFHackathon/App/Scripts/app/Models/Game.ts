@@ -13,16 +13,29 @@
 
     export class Board {
         constructor(private _height: number, private _width: number ) {
-            this._fields = new DominoTile[_width, _height];
+            this._cells = new BoardCell[_width][_height];
         }
 
-        private _fields: DominoTile[][];
+        private _cells: BoardCell[][];
 
         public getTile(x: number, y: number): DominoTile{
-            return this._fields[x][y];
+            var cell = this._cells[x][y];
+            if (cell.isEmpty())
+                return null;
+            else
+                return cell.DominoTile;
         }
+    }
 
+    export class BoardCell {
+        constructor() {
+            this.DominoTile = null;
+        }
+        public DominoTile: DominoTile;
 
+        public isEmpty() : boolean{
+            return this.DominoTile == null;
+        }
     }
 
     export class DominoPiece {
