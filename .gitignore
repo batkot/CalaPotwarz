@@ -6,10 +6,9 @@
 *.user
 *.sln.docstates
 *.orig
+*.swp
+*.js.map
 
-# compiled ts
-app/*.js
-app/*.js*
 
 # Build results
 [Dd]ebug/
