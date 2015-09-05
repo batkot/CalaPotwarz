@@ -1,7 +1,9 @@
-﻿namespace App.Domino
+﻿using App.Models;
+
+namespace App.Domino
 {
-    public interface ICategoriesProvider
+    public interface ICanDrawDominoTile
     {
-        string DrawCategory();
+        DominoTile DrawTile();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using App.Domino;
+using App.Models;
 using FakeItEasy;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,12 @@ namespace App.Domino.Model
 {
     public class GameBuilderTests
     {
-        private ICategoriesProvider _categoriesProvider;
+        private ICanDrawDominoTile _categoriesProvider;
         private ICanFindPath _pathFinder;
 
         public GameBuilderTests()
         {
-            _categoriesProvider = A.Fake<ICategoriesProvider>();
+            _categoriesProvider = A.Fake<ICanDrawDominoTile>();
             _pathFinder = A.Fake<ICanFindPath>();
         }
 
@@ -26,7 +27,7 @@ namespace App.Domino.Model
         public void Create_BuildsGameOfAGivenSize(int width, int height)
         {
             A.CallTo(() => _pathFinder.FindPath(width, height)).Returns(new SuggestedPath { MinimumRequiredPieces = 3 });
-            A.CallTo(() => _categoriesProvider.DrawCategory()).Returns("fakeCategory");
+            A.CallTo(() => _categoriesProvider.DrawTile()).Returns(new DominoTile("FAKE", "FAKE"));
 
             var builder = new GameBuilder(_categoriesProvider, _pathFinder);
 
@@ -44,7 +45,7 @@ namespace App.Domino.Model
             var middleCategory = "Middle";
 
             A.CallTo(() => _pathFinder.FindPath(1, 1)).WithAnyArguments().Returns(new SuggestedPath { MinimumRequiredPieces = 2 });
-            A.CallTo(() => _categoriesProvider.DrawCategory()).ReturnsNextFromSequence(beginCategory, endCategory, middleCategory);
+            A.CallTo(() => _categoriesProvider.DrawTile()).ReturnsNextFromSequence(new DominoTile(beginCategory, ""), new DominoTile(endCategory, ""), new DominoTile(middleCategory,""));
 
             var builder = new GameBuilder(_categoriesProvider, _pathFinder);
 
@@ -67,7 +68,7 @@ namespace App.Domino.Model
             var minimumPathSize = 2;
             var noiseCount = 5;
             A.CallTo(() => _pathFinder.FindPath(1, 1)).WithAnyArguments().Returns(new SuggestedPath { MinimumRequiredPieces = minimumPathSize });
-            A.CallTo(() => _categoriesProvider.DrawCategory()).Returns("DoesntMatterCategory");
+            A.CallTo(() => _categoriesProvider.DrawTile()).Returns(new DominoTile("", ""));
 
             var builder = new GameBuilder(_categoriesProvider, _pathFinder);
 
