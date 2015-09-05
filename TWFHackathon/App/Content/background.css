@@ -10,4 +10,5 @@
     -ms-filter: blur(5px);
     filter: blur(5px);
     z-index: -1;
+    opacity: 0.5;
 }

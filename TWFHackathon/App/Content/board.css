@@ -6,8 +6,7 @@
 }
 
 .board {
-    border: 1px solid #fff;
-    background: rgba(0, 0, 0, 0.80);
+    background: rgba(0, 0, 0, 0.25);
     clear: both;
     padding: 64px;
     font-size: 0;
@@ -30,7 +29,7 @@
 }
 
 .board-cell {
-    border: 1px solid gray;
+    border: 1px solid #000;
     background: rgba(255, 255, 255, 0.5);
     width: 64px;
     max-width: 64px;
@@ -52,6 +51,7 @@
     height: 100%;
     background: #000;
     color: #000;
-    max-width: 192px;
+    max-width: 208px;
     padding: 16px;
+    border-right: 1px solid #fff;
 }
