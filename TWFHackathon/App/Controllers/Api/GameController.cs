@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using App.Models;
+using System.Web.Http;
 
 namespace App.Controllers.Api
 {
@@ -11,9 +12,12 @@ namespace App.Controllers.Api
             _foo = foo;
         }
 
-        public string Get()
+        public GameModel Get()
         {
-            return _foo.DoStuff();
+            return new GameModel()
+            {
+                Name = _foo.DoStuff()
+            };
         }
     }
 
@@ -26,7 +30,7 @@ namespace App.Controllers.Api
     {
         public string DoStuff()
         {
-            return "Yo";
+            return "Dyniak power";
         }
     }
 }
