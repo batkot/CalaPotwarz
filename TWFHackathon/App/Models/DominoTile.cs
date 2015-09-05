@@ -15,22 +15,20 @@
 
     public class DominoPiece
     {
-        public DominoTile UpperTile { get; private set; }
-        public DominoTile LowerTile { get; private set; }
+        public DominoTile FirstTile { get; private set; }
+        public DominoTile SecondTile { get; private set; }
         public DominoOrientation Orientation { get; private set; }
 
-        public DominoPiece(DominoTile upper, DominoTile lower)
+        public DominoPiece(DominoTile firstTile, DominoTile secondTile)
         {
-            UpperTile = upper;
-            LowerTile = lower;
+            FirstTile = firstTile;
+            SecondTile = secondTile;
         }
     }
 
     public enum DominoOrientation
     {
-        Regular,
-        Right,
-        UpsideDown,
-        Left
+        Vertical,
+        Horizontal
     }
 }

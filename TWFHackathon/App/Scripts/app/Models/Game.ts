@@ -26,14 +26,14 @@
     }
 
     export class DominoPiece {
-        constructor(private _tiles: DominoTile[], private _orientation: DominoPieceOrientation) { };
+        constructor(private _firstTile: DominoTile, private _secondTile: DominoTile, private _orientation: DominoPieceOrientation) { };
 
         get firstTile(): DominoTile {
-            return this._tiles[0];
+            return this._firstTile;
         }
 
         get secondTile(): DominoTile {
-            return this._tiles[1];
+            return this._secondTile;
         }
 
         get orientation(): DominoPieceOrientation {
