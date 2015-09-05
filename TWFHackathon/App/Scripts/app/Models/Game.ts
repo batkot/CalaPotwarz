@@ -13,13 +13,13 @@
 
     export class Board {
         constructor(private _height: number, private _width: number ) {
-            this._cells = new BoardCell[_width][_height];
+            this.Cells = new Array<Array<BoardCell>>();
         }
 
-        private _cells: BoardCell[][];
+        public Cells: BoardCell[][];
 
         public getTile(x: number, y: number): DominoTile{
-            var cell = this._cells[x][y];
+            var cell = this.Cells[x][y];
             if (cell.isEmpty())
                 return null;
             else

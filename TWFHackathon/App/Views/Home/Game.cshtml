@@ -2,11 +2,11 @@
     <div ng-controller="gameController as gc">
         <div class="board-wrapper">
             <div class="board vcenter fadeIn">
-                <ul data-ng-repeat="row in gc.board.Rows">
+                <ul data-ng-repeat="row in gc.board.Cells">
                     <li>
-                        <ul class="board-row" data-ng-repeat="column in gc.board.Columns">
+                        <ul class="board-row" data-ng-repeat="cell in row">
                             <li class="board-cell" ng-class="gc.board.CellClass">
-                                {{ row + ',' + column }}
+                                {{ cell }}
                             </li>
                         </ul>
                     </li>
