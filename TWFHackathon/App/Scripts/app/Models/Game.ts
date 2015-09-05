@@ -62,6 +62,12 @@
         public IsSolved: boolean;
 
         public getTile(x: number, y: number): DominoTile{
+            if (x == -1 && y == 0)
+                return this.StartTile;
+
+            if (x == this._height && y == this._width - 1)
+                return this.FinishTile;
+
             if (x < 0 || y < 0 || x >= this._width || y >= this._height)
                 return null;
             var cell = this.Cells[x][y];
@@ -127,7 +133,7 @@
                 }
             }
 
-            if (pieceIndex > 0){ 
+            if (pieceIndex > -1){ 
                 var piece: DominoPiece = this.PlacedPieces[pieceIndex].Piece;
                 var firstTile = this.PlacedPieces[pieceIndex].FirstTileCoordinates;
                 this.Cells[firstTile.x][firstTile.y].DominoTile = null;
