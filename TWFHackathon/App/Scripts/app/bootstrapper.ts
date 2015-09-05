@@ -4,6 +4,7 @@ module Bootstrapper {
         .controller('gameController', Controllers.GameController)
         .service('initializer', Services.Initializer)
         .service('piecePlacer', Services.DominoPiecePlacer)
-        .service('pieceRotator', Services.DominoPieceRotator);
+        .service('pieceRotator', Services.DominoPieceRotator)
+        .service('scoreKeeper', Services.ScoreKeeper);
 }
 

@@ -52,7 +52,14 @@
         </div>
 
         <div class="win-message" ng-class="{ 'hidden': gc.board.IsSolved != true, 'bringToView': gc.board.IsSolved }">
-            <div class="center-text vcenter"><h1>Udało Ci się! Brawo!</h1></div>
+            <div class="center-text vcenter">
+                <h1>
+                    <i class="fa fa-trophy"></i><br/>
+                    Udało Ci się! Brawo!
+                    <br />
+                    <i class="fa fa-star" data-ng-repeat="start in gc.score"></i>
+                </h1>
+            </div>
         </div>
 
         <!-- Modal -->

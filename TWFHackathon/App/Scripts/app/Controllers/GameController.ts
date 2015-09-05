@@ -6,12 +6,14 @@ module Controllers {
         public error: Models.Error;
         public game: Models.Game;
         public board: Models.Board;
+        public score: number[];
 
         constructor(
             private $scope: Scopes.IAppScope,
             private initializer: Services.Initializer,
             private piecePlacer: Services.DominoPiecePlacer,
-            private pieceRotator: Services.DominoPieceRotator) {
+            private pieceRotator: Services.DominoPieceRotator,
+            private scoreKeeper: Services.ScoreKeeper) {
 
             initializer.createGame((g) => this.onGameCreated(g), (e) => this.onServerError(e));
         }
@@ -58,6 +60,7 @@ module Controllers {
             var piece: Models.DominoPiece = this.board.takePiece(cell.x, cell.y);
             if (piece != null) {
                 this.game.addPiece(piece);
+                this.scoreKeeper.addPieceTaken();
             }
         }
 
@@ -85,8 +88,12 @@ module Controllers {
                 this.game.removePiece(piece);
                 this.game.SelectedPiece = null;
                 this.board.IsSolved = this.board.isSolved();
-                if (this.board.IsSolved)
-                    console.log("solved");
+                if (this.board.IsSolved) {
+                    this.score = new Array<number>();
+                    var res = this.scoreKeeper.ComputeScore(this.game, this.board);
+                    for (var i = 0; i < res; i++)
+                        this.score.push(i);
+                }
             }
         }
     }
