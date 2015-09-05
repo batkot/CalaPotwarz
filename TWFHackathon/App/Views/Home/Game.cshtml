@@ -1,20 +1,18 @@
 ﻿<div ng-app="app">
     <div ng-controller="gameController as gc">
-        {{ gc.message }}
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="Ups, wystąpił błąd">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">{{ gc.error.status }}</h4>
-                </div>
-                <div class="modal-body">
-                    <h5>{{ gc.error.statusText }}</h5>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- Modal -->
+        <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="Ups, wystąpił błąd">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ gc.error.Status }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h5>{{ gc.error.Message }}</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,12 +1,12 @@
 var Models;
 (function (Models) {
-    'use strict';
     var Error = (function () {
-        function Error(statusText, status) {
-            this.statusText = statusText;
-            this.status = status;
+        function Error(Status, Message) {
+            this.Status = Status;
+            this.Message = Message;
         }
         return Error;
     })();
     Models.Error = Error;
 })(Models || (Models = {}));
+//# sourceMappingURL=Common.js.map

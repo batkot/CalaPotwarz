@@ -4,3 +4,4 @@ var Bootstrapper;
         .controller('gameController', Controllers.GameController)
         .service('initializer', Services.Initializer);
 })(Bootstrapper || (Bootstrapper = {}));
+//# sourceMappingURL=bootstrapper.js.map

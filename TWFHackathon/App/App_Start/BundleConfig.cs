@@ -36,6 +36,7 @@ namespace App
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                       "~/Scripts/angular.min.js",
+                      "~/Scripts/app/models/common.js",
                       "~/Scripts/app/models/game.js",
                       "~/Scripts/app/services/initializer.js",
                       "~/Scripts/app/controllers/gamecontroller.js",

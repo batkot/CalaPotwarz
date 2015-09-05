@@ -2,27 +2,22 @@
 
 module Controllers {
     export class GameController {
-        private game: Models.Game;
-        private error: Models.Error;
+        public message: string;
+        public error: Models.Error;
 
         constructor(
             private $scope: Scopes.IAppScope,
             private initializer: Services.Initializer) {
 
-            $scope.game = this;
-            initializer.createGame(this.onGameCreated, this.onServerError);
+            initializer.createGame((g) => this.onGameCreated(g), (e) => this.onServerError(e));
         }
 
-        onGameCreated(game: Models.Game) {
-            this.game = game;
-            console.log(game);
+        onGameCreated(game: Models.Game): void {
+            this.$scope.game = game;
         }
 
-        onServerError(error: Models.Error) {
+        onServerError(error: Models.Error): void {
             this.error = error;
-
-            console.log(error);
-
             $("#errorModal").modal('show');
         }
     }
