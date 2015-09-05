@@ -32,6 +32,31 @@
             else
                 return cell.DominoTile;
         }
+
+        public putPiece(piece: DominoPiece, x: number, y: number) : boolean {
+            var second_x = x;
+            var second_y = y + 1;
+
+            if (piece.orientation == DominoPieceOrientation.LeftRight) {
+                second_x = x + 1;
+                second_y = y;
+            }
+
+            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y)) {
+                this.Cells[x][y].DominoTile = piece.firstTile;
+                this.Cells[second_x][second_y].DominoTile = piece.secondTile;
+            }
+            else
+                return false;
+        }
+
+        private isOnBoard(x: number, y: number): boolean {
+            return x < this._width && y < this._height;
+        }
+
+        private canPutOnCell(x: number, y: number) {
+            return this.isOnBoard(x, y) && this.Cells[x][y].isEmpty();
+        }
     }
 
     export class BoardCell {
