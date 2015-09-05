@@ -57,7 +57,7 @@ module Controllers {
         tryRemovePiece(cell: Models.BoardCell): void {
             var piece: Models.DominoPiece = this.board.takePiece(cell.x, cell.y);
             if (piece != null) {
-                this.game.addPiece
+                this.game.addPiece(piece);
             }
         }
 
