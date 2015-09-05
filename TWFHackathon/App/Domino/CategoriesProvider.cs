@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace App.Domino
 {
-    public class CategoriesProvider
+    public class CategoriesProvider : ICategoriesProvider
     {
         private List<string> _categories;
 

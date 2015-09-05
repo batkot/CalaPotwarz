@@ -3,6 +3,7 @@
 
     export class Game {
         constructor(
+            public PlayerPieces: DominoPiece[],
             public Id: string,
             public Name: string,
             public Height: number,
@@ -10,7 +11,10 @@
             ) { }
     }
 
-    export class Board {
+    export class DominoPiece {
+        public UpperTile: DominoTile;
+        public LowerTile: DominoTile;
+        public Orientation: DominoOrientation;
         constructor(private _height: number, private _width: number ) {
             this._fields = new DominoTile[_width, _height];
         }
@@ -23,4 +27,5 @@
 
 
     }
+
 }

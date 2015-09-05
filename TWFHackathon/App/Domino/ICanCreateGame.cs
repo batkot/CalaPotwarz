@@ -4,6 +4,6 @@ namespace App.Domino
 {
     public interface ICanCreateGame
     {
-        GameModel Create();
+        GameModel Create(int width, int height, int additionalPiecesCount);
     }
 }
