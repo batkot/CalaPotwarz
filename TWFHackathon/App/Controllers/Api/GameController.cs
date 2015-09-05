@@ -5,6 +5,7 @@ namespace App.Controllers.Api
     public class GameController : ApiController
     {
         private readonly IFoo _foo;
+
         public GameController(IFoo foo)
         {
             _foo = foo;
