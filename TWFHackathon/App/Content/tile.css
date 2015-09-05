@@ -1,34 +1,51 @@
 ﻿.domino-piece{
     position: relative;
     background: #fff;
+    text-align: center;
     cursor: pointer;
+    margin: auto;
 }
 
 .domino-tile {
     position: absolute;
-    height: 64px;
-    width: 64px;
+    height: 48px;
+    width: 48px;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .inactive-tile{
     background: rgba(255, 255, 255, 0.75);
 }
 
-.board-inventory .domino-piece{
-    float:left;
+.domino-piece-horizontal{
     width: 64px;
     height: 128px;
+}
+
+.domino-piece-vertical{
+    width: 128px;
+    height: 64px;
+}
+
+.board-inventory .domino-piece {
+    float: left;
     border: 1px solid #fff;
     margin: 8px;
     position: relative;
+    background: #fff;
+    background-image: url('gfx/blackPoint.png');
+    background-repeat: repeat-x;
+    background-position: center;
 }
 
-
-
 .board-inventory .domino-piece .upper-domino-tile{
-    top: 0;
+    top: 4px;
+    left: 8px;
 }
 
 .board-inventory .domino-piece .bottom-domino-tile{
-    bottom: 0;
+    bottom: 4px;
+    left: 8px;
 }

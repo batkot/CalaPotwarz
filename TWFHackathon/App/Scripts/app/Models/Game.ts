@@ -3,6 +3,7 @@
 
     export class Game {
         constructor(
+            public SelectedPiece: DominoPiece,
             public PlayerPieces: DominoPiece[],
             public Id: string,
             public Name: string,

@@ -25,7 +25,6 @@
     padding: 0;
     margin: 0;
     display: inline-block;
-
 }
 
 .board-cell {
@@ -54,4 +53,14 @@
     max-width: 208px;
     padding: 16px;
     border-right: 1px solid #fff;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.board-selected-piece-wrapper{
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 96px;
 }

@@ -19,12 +19,18 @@ module Controllers {
 
             this.game = this.$scope.game = game;
             this.board = new Models.Board(game.Width, game.Height);
-            console.log(this.board);
+            this.game.SelectedPiece = this.game.PlayerPieces[0];
+
+            console.log(this.game);
         }
 
         onServerError(error: Models.Error): void {
             this.error = error;
             $("#errorModal").modal('show');
+        }
+
+        onPieceSelected(id: string) {
+            console.log(id);
         }
     }
 }

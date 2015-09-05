@@ -28,7 +28,8 @@ namespace App.Domino
         {
             var category = _categories[_rand.Next(_categories.Count)];
             var picture = category.Pictures[_rand.Next(category.Pictures.Count)];
-            var picturePath = string.Format(@"gfx/pics/{0}/{1}", category.Name, picture);
+            var picturePath = string.Format(@"../Content/gfx/pics/{0}/{1}", category.Name, picture);
+
             return new DominoTile(category.Name, picturePath);
         }
 
