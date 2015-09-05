@@ -17,5 +17,5 @@ namespace App.Controllers.Api
         {
             return _gameCreator.Create(4,4,10);
         }
-    }
+   } 
 }
