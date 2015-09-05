@@ -6,11 +6,11 @@ var Services;
         }
         ;
         Initializer.prototype.createGame = function (successCallback, errorCallback) {
-            this.$http.get('/api/Game').
+            this.$http.get('/api/Gme').
                 then(function (response) {
                 successCallback(response.data);
             }, function (response) {
-                errorCallback(response.status);
+                errorCallback(response);
             });
         };
         ;

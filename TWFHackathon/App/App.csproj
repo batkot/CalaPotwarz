@@ -188,6 +188,46 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\gfx\menuBck.jpg" />
+    <Content Include="Content\gfx\pics\animal\cat1.png" />
+    <Content Include="Content\gfx\pics\animal\cat2.png" />
+    <Content Include="Content\gfx\pics\animal\dog1.png" />
+    <Content Include="Content\gfx\pics\animal\dog2.png" />
+    <Content Include="Content\gfx\pics\building\ancient.png" />
+    <Content Include="Content\gfx\pics\building\castle.png" />
+    <Content Include="Content\gfx\pics\building\house.png" />
+    <Content Include="Content\gfx\pics\building\mosque.png" />
+    <Content Include="Content\gfx\pics\digit\1.png" />
+    <Content Include="Content\gfx\pics\digit\2.png" />
+    <Content Include="Content\gfx\pics\digit\3.png" />
+    <Content Include="Content\gfx\pics\digit\4.png" />
+    <Content Include="Content\gfx\pics\flower\flower1.png" />
+    <Content Include="Content\gfx\pics\flower\flower2.png" />
+    <Content Include="Content\gfx\pics\flower\flower3.png" />
+    <Content Include="Content\gfx\pics\flower\flower4.png" />
+    <Content Include="Content\gfx\pics\land vehicle\bicycle.png" />
+    <Content Include="Content\gfx\pics\land vehicle\car1.png" />
+    <Content Include="Content\gfx\pics\land vehicle\car2.png" />
+    <Content Include="Content\gfx\pics\land vehicle\motorcycle.png" />
+    <Content Include="Content\gfx\pics\letter\A.png" />
+    <Content Include="Content\gfx\pics\letter\B.png" />
+    <Content Include="Content\gfx\pics\letter\C.png" />
+    <Content Include="Content\gfx\pics\letter\D.png" />
+    <Content Include="Content\gfx\pics\person\body.png" />
+    <Content Include="Content\gfx\pics\person\female.png" />
+    <Content Include="Content\gfx\pics\person\femaleHead.png" />
+    <Content Include="Content\gfx\pics\person\maleHead.png" />
+    <Content Include="Content\gfx\pics\phone\analog.png" />
+    <Content Include="Content\gfx\pics\phone\bootstrap.png" />
+    <Content Include="Content\gfx\pics\phone\earphone.png" />
+    <Content Include="Content\gfx\pics\phone\mobile.png" />
+    <Content Include="Content\gfx\pics\plane\plane1.png" />
+    <Content Include="Content\gfx\pics\plane\plane2.png" />
+    <Content Include="Content\gfx\pics\plane\plane3.png" />
+    <Content Include="Content\gfx\pics\plane\plane4.png" />
+    <Content Include="Content\gfx\pics\shoe\shoe1.png" />
+    <Content Include="Content\gfx\pics\shoe\shoe2.png" />
+    <Content Include="Content\gfx\pics\shoe\shoe3.png" />
+    <Content Include="Content\gfx\pics\shoe\shoe4.png" />
     <Content Include="Content\menu.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -1024,6 +1064,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\bootstrapper.ts" />
     <TypeScriptCompile Include="Scripts\app\Controllers\GameController.ts" />
+    <TypeScriptCompile Include="Scripts\app\Models\Common.ts" />
     <TypeScriptCompile Include="Scripts\app\Models\Game.ts" />
     <TypeScriptCompile Include="Scripts\app\Scopes\IAppScope.ts" />
     <TypeScriptCompile Include="Scripts\app\Services\Initializer.ts" />
@@ -1034,6 +1075,7 @@
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-route.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>
   <ItemGroup>
