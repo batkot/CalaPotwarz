@@ -1,6 +1,7 @@
 ﻿<div ng-app="app">
     <div class="flying-header"><h2>Wybierz klocek domino z przybornika z lewej strony</h2></div>
     <div ng-controller="gameController as gc">
+        <div id="categories" class="hidden" count="@ViewBag.Size"></div>
         <div class="board-wrapper">
             <div class="board vcenter fadeIn">
                 <div class="center-text">

@@ -13,16 +13,6 @@ namespace App.Tests.Api
         {
             _fake = A.Fake<ICanCreateGame>();
         }
-
-        [Fact]
-        public void Test()
-        {
-            var controller = new GameController(_fake);
-
-            var result = controller.Get();
-
-            Assert.NotNull(result);
-        }
     }
 
 }

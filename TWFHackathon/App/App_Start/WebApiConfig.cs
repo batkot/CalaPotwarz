@@ -13,7 +13,7 @@ namespace App
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{categoryCount}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

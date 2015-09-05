@@ -6,24 +6,22 @@ namespace App.Domino
 {
     public class GameBuilder : ICanCreateGame
     {
-        private readonly ICanDrawDominoTile _tileProvider;
         private readonly ICanFindPath _pathFinder;
 
-        public GameBuilder(ICanDrawDominoTile provider, ICanFindPath pathFinder)
+        public GameBuilder(ICanFindPath pathFinder)
         {
-            _tileProvider = provider;
             _pathFinder = pathFinder;
         }
 
-        public GameModel Create(int width, int height, int additionalPieceCount)
+        public GameModel Create(int width, int height, int additionalPieceCount, ICanDrawDominoTile tileProvider)
         {
             if (width < 1 || height < 1)
                 throw new ArgumentException();
 
             var id = Guid.NewGuid().ToString();
 
-            var startTile = _tileProvider.DrawTile();
-            var finishTile = _tileProvider.DrawTile();
+            var startTile = tileProvider.DrawTile();
+            var finishTile = tileProvider.DrawTile();
 
             var suggestedPath = _pathFinder.FindPath(width, height);
             var minimumPathPieces = new List<DominoPiece>();
@@ -31,8 +29,8 @@ namespace App.Domino
 
             for (int i = 0; i < suggestedPath.MinimumRequiredPieces - 1; i++)
             {
-                lastTile = _tileProvider.DrawTileFromCategory(lastTile.Category);
-                var secondTile = _tileProvider.DrawTile();
+                lastTile = tileProvider.DrawTileFromCategory(lastTile.Category);
+                var secondTile = tileProvider.DrawTile();
                 minimumPathPieces.Add(new DominoPiece(lastTile, secondTile));
                 lastTile = secondTile;
             }
@@ -40,7 +38,7 @@ namespace App.Domino
             minimumPathPieces.Add(new DominoPiece(lastTile, finishTile));
 
             for(int i = 0; i < additionalPieceCount; i++)
-                minimumPathPieces.Add(new DominoPiece(_tileProvider.DrawTile(), _tileProvider.DrawTile()));
+                minimumPathPieces.Add(new DominoPiece(tileProvider.DrawTile(), tileProvider.DrawTile()));
 
             Shuffle(minimumPathPieces);
             return new GameModel(id, width, height, startTile, finishTile, minimumPathPieces.ToArray());

@@ -27,7 +27,7 @@ namespace App.Domino
 
         public DominoTile DrawTile()
         {
-            Category cat = _categories[_rand.Next(_categories.Count)];
+            Category cat = _categories[_rand.Next(_categories.Count) % CategoryLimit];
             return DrawFromCategory(cat);
         }
 
@@ -46,5 +46,7 @@ namespace App.Domino
         }
 
         private static Random _rand = new Random(Guid.NewGuid().GetHashCode());
+
+        public int CategoryLimit { get; set; }
     }
 }
