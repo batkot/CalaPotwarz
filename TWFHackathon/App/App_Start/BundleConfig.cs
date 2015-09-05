@@ -43,6 +43,7 @@ namespace App
                       "~/Scripts/app/services/initializer.js",
                       "~/Scripts/app/services/pieceplacer.js",
                       "~/Scripts/app/services/piecerotator.js",
+                      "~/Scripts/app/services/scorekeeper.js",
                       "~/Scripts/app/controllers/gamecontroller.js",
                       "~/Scripts/app/bootstrapper.js"));
         }

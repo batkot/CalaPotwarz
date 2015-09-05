@@ -11,7 +11,8 @@ module Controllers {
             private $scope: Scopes.IAppScope,
             private initializer: Services.Initializer,
             private piecePlacer: Services.DominoPiecePlacer,
-            private pieceRotator: Services.DominoPieceRotator) {
+            private pieceRotator: Services.DominoPieceRotator,
+            private scoreKeeper: Services.ScoreKeeper) {
 
             initializer.createGame((g) => this.onGameCreated(g), (e) => this.onServerError(e));
         }
@@ -58,6 +59,7 @@ module Controllers {
             var piece: Models.DominoPiece = this.board.takePiece(cell.x, cell.y);
             if (piece != null) {
                 this.game.addPiece(piece);
+                this.scoreKeeper.addPieceTaken();
             }
         }
 
@@ -85,8 +87,10 @@ module Controllers {
                 this.game.removePiece(piece);
                 this.game.SelectedPiece = null;
                 this.board.IsSolved = this.board.isSolved();
-                if (this.board.IsSolved)
+                if (this.board.IsSolved) {
                     console.log("solved");
+                    console.log("Score" + this.scoreKeeper.ComputeScore(this.game, this.board));
+                }
             }
         }
     }
