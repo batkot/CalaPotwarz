@@ -2,13 +2,23 @@
 {
     public class GameModel
     {
+        public string Id { get; set; }
         public string Name { get; set; }
 
-        public DominoPiece[] Pieces { get; private set; }
+        public DominoPiece[] PlayerPieces { get; private set; }
+        public int Height { get; private set; }
+        public int Width { get; private set; }
+        public DominoTile StartTile { get; private set; }
+        public DominoTile FinishTile { get; private set; }
 
-        public GameModel(params DominoPiece[] pieces)
+        public GameModel(string id, int width, int height, DominoTile start, DominoTile finish, params DominoPiece[] playerPieces)
         {
-            Pieces = pieces;
+            Id = id;
+            Width = width;
+            Height = height;
+            PlayerPieces = playerPieces;
+            StartTile = start;
+            FinishTile = finish;
         }
     }
 }
