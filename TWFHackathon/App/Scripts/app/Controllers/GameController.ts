@@ -21,6 +21,8 @@ module Controllers {
         onServerError(error: Models.Error) {
             this.error = error;
 
+            console.log(error);
+
             $("#errorModal").modal('show');
         }
     }
