@@ -2,7 +2,27 @@
     <div ng-controller="gameController as gc">
         {{ gc.message }}
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="Ups, wystąpił błąd">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ error.status }}</h4>
+                </div>
+                <div class="modal-body">
+                    <h5>{{ error.statusText }}</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 @section scripts{
     @Scripts.Render("~/bundles/app")
