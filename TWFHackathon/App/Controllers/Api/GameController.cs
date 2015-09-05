@@ -1,36 +1,21 @@
-﻿using App.Models;
+﻿using App.Domino;
+using App.Models;
 using System.Web.Http;
 
 namespace App.Controllers.Api
 {
     public class GameController : ApiController
     {
-        private readonly IFoo _foo;
+        private readonly ICanCreateGame _gameCreator;
 
-        public GameController(IFoo foo)
+        public GameController(ICanCreateGame gameCreator)
         {
-            _foo = foo;
+            _gameCreator = gameCreator;
         }
 
         public GameModel Get()
         {
-            return new GameModel()
-            {
-                Name = _foo.DoStuff()
-            };
-        }
-    }
-
-    public interface IFoo
-    {
-        string DoStuff();
-    }
-
-    public class Bar : IFoo
-    {
-        public string DoStuff()
-        {
-            return "Dyniak power";
+            return _gameCreator.Create();
         }
     }
 }

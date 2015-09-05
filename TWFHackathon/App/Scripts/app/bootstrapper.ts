@@ -1,7 +1,7 @@
 ﻿
 module Bootstrapper {
     var app = angular.module('app', [])
-        .controller('shellController', Controllers.ShellController)
+        .controller('gameController', Controllers.GameController)
         .service('initializer', Services.Initializer);
 }
 

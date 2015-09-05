@@ -26,14 +26,19 @@ namespace App
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-theme.css",
+                      "~/Content/font-awesome.css",
                       "~/Content/animations.css",
+                      "~/Content/common.css",
+                      "~/Content/background.css",
+                      "~/Content/menu.css",
                       "~/Content/app.css",
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                       "~/Scripts/angular.min.js",
+                      "~/Scripts/app/models/game.js",
                       "~/Scripts/app/services/initializer.js",
-                      "~/Scripts/app/controllers/shellcontroller.js",
+                      "~/Scripts/app/controllers/gamecontroller.js",
                       "~/Scripts/app/bootstrapper.js"));
         }
     }
