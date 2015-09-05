@@ -3,7 +3,7 @@
 
     export class Game {
         constructor(
-            public PlayerPieces: Models.DominoPiece[],
+            public PlayerPieces: DominoPiece[],
             public Id: string,
             public Name: string,
             public Height: number,
@@ -12,38 +12,30 @@
     }
 
     export class Board {
-        public Rows: Array<number>;
-        public Columns: Array<number>;
-        public CellClass: string;
-
         constructor(private _height: number, private _width: number ) {
-            //this._fields = new Models.DominoTile[_width, _height];
-            this.initGrid();
+            this._cells = new BoardCell[_width][_height];
         }
 
-        initGrid() {
-            this.Rows = new Array<number>();
-            this.Columns = new Array<number>();
+        private _cells: BoardCell[][];
 
-            var factor = 12 / this._width;
-            this.CellClass = 'col-md-' + factor;
-
-            for (var r = 0; r < this._height; r++) {
-                this.Rows.push(r);
-            }
-
-            for (var c = 0; c < this._height; c++) {
-                this.Columns.push(c);
-            }
+        public getTile(x: number, y: number): DominoTile{
+            var cell = this._cells[x][y];
+            if (cell.isEmpty())
+                return null;
+            else
+                return cell.DominoTile;
         }
+    }
 
-        private _fields: Models.DominoTile[][];
-
-        public getTile(x: number, y: number): Models.DominoTile{
-            return this._fields[x][y];
+    export class BoardCell {
+        constructor() {
+            this.DominoTile = null;
         }
+        public DominoTile: DominoTile;
 
-
+        public isEmpty() : boolean{
+            return this.DominoTile == null;
+        }
     }
 
     export class DominoPiece {
