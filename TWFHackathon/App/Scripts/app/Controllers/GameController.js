@@ -8,7 +8,7 @@ var Controllers;
             initializer.createGame(function (g) { return _this.onGameCreated(g); }, function (e) { return _this.onServerError(e); });
         }
         GameController.prototype.onGameCreated = function (game) {
-            this.$scope.game = game;
+            this.game = this.$scope.game = game;
         };
         GameController.prototype.onServerError = function (error) {
             this.error = error;
