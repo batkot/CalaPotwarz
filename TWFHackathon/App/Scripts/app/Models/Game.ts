@@ -62,6 +62,8 @@
         public IsSolved: boolean;
 
         public getTile(x: number, y: number): DominoTile{
+            if (x >= this._width || y >= this._height)
+                return null;
             var cell = this.Cells[x][y];
             if (cell == null || cell == undefined || cell.isEmpty())
                 return null;
