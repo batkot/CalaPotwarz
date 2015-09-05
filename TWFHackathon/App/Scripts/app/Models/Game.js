@@ -16,8 +16,21 @@ var Models;
         function Board(_height, _width) {
             this._height = _height;
             this._width = _width;
-            this._fields = new DominoTile[_width, _height];
+            //this._fields = new Models.DominoTile[_width, _height];
+            this.initGrid();
         }
+        Board.prototype.initGrid = function () {
+            this.Rows = new Array();
+            this.Columns = new Array();
+            var factor = 12 / this._width;
+            this.CellClass = 'col-md-' + factor;
+            for (var r = 0; r < this._height; r++) {
+                this.Rows.push(r);
+            }
+            for (var c = 0; c < this._height; c++) {
+                this.Columns.push(c);
+            }
+        };
         Board.prototype.getTile = function (x, y) {
             return this._fields[x][y];
         };

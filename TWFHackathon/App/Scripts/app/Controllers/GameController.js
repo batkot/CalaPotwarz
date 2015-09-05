@@ -11,6 +11,7 @@ var Controllers;
             console.log("GAME");
             console.log(game);
             this.game = this.$scope.game = game;
+            this.board = new Models.Board(game.Width, game.Height);
         };
         GameController.prototype.onServerError = function (error) {
             this.error = error;
