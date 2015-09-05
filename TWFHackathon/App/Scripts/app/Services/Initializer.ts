@@ -8,11 +8,12 @@
         };
 
         createGame(successCallback: Function, errorCallback: Function): void {
-            this.$http.get('/api/Gme').
+            this.$http.get('/api/Game').
                 then(function (response) {
                     successCallback(response.data);
                 }, function (response) {
-                    errorCallback(response);
+                    var error = new Models.Error(response.status, response.data.Message);
+                    errorCallback(error);
                 });
         };
     }

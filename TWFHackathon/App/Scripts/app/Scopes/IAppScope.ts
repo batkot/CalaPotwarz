@@ -1,5 +1,6 @@
 ﻿module Scopes {
     export interface IAppScope extends ng.IScope {
-        game: Controllers.GameController
+        game: Models.Game,
+        error: Models.Error
     }
 }
