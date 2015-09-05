@@ -28,6 +28,10 @@ module Controllers {
         }
 
         putPiece(pieceId: string, x: number, y: number): void {
+            var piece = this.game.getPiece(pieceId);
+            if (this.board.putPiece(piece, x, y)) {
+                this.game.removePiece(pieceId);
+            }
         }
     }
 }

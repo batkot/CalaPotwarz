@@ -3,12 +3,28 @@
 
     export class Game {
         constructor(
-            public PlayerPieces: DominoPiece[],
+            public PlayerPieces: Array<DominoPiece>,
             public Id: string,
             public Name: string,
             public Height: number,
             public Width: number
             ) { }
+
+        getPiece(pieceId: string): DominoPiece {
+            for (var piece in this.PlayerPieces) {
+                if (piece.Id == pieceId)
+                    return piece;
+            }
+        }
+
+        removePiece(pieceId: string): void {
+            for (var i = 0; i < this.PlayerPieces.length; i++) {
+                if (this.PlayerPieces[i].Id == pieceId) {
+                    this.PlayerPieces.splice(i, 1);
+                    return;
+                }
+            }
+        }
     }
 
     export class Board {
