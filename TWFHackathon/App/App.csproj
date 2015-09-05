@@ -185,6 +185,7 @@
     <Content Include="Content\animations.css" />
     <Content Include="Content\app.css" />
     <Content Include="Content\background.css" />
+    <Content Include="Content\board.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

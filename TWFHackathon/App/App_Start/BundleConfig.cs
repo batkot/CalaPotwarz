@@ -31,6 +31,7 @@ namespace App
                       "~/Content/common.css",
                       "~/Content/background.css",
                       "~/Content/menu.css",
+                      "~/Content/board.css",
                       "~/Content/app.css",
                       "~/Content/site.css"));
 
