@@ -236,6 +236,7 @@
     <Content Include="Content\gfx\pics\shoe\shoe3.png" />
     <Content Include="Content\gfx\pics\shoe\shoe4.png" />
     <Content Include="Content\menu.css" />
+    <Content Include="Content\tile.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1077,6 +1078,7 @@
     <TypeScriptCompile Include="Scripts\app\Scopes\IAppScope.ts" />
     <TypeScriptCompile Include="Scripts\app\Services\Initializer.ts" />
     <TypeScriptCompile Include="Scripts\app\Services\PiecePlacer.ts" />
+    <TypeScriptCompile Include="Scripts\app\Services\PieceRotator.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
@@ -1105,7 +1107,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63669</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

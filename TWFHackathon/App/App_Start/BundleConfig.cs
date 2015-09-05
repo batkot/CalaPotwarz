@@ -32,6 +32,7 @@ namespace App
                       "~/Content/background.css",
                       "~/Content/menu.css",
                       "~/Content/board.css",
+                      "~/Content/tile.css",
                       "~/Content/app.css",
                       "~/Content/site.css"));
 
@@ -41,6 +42,7 @@ namespace App
                       "~/Scripts/app/models/game.js",
                       "~/Scripts/app/services/initializer.js",
                       "~/Scripts/app/services/pieceplacer.js",
+                      "~/Scripts/app/services/piecerotator.js",
                       "~/Scripts/app/controllers/gamecontroller.js",
                       "~/Scripts/app/bootstrapper.js"));
         }
