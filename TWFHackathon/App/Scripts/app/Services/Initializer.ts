@@ -1,20 +1,18 @@
 ﻿module Services {
     export interface IInitializer {
-        requestBoard(callback: Function): void;
+        createGame(callback: Function): void;
     }
 
     export class Initializer {
         constructor(private $http: ng.IHttpService) {
         };
 
-        requestBoard(successCallback: Function, errorCallback: Function): void {
-            this.$http.get('/pinus').
+        createGame(successCallback: Function, errorCallback: Function): void {
+            this.$http.get('/api/Game').
                 then(function (response) {
-                    console.log('all ok');
-                    successCallback(response);
+                    successCallback(response.data);
                 }, function (response) {
-                    console.log('error occured');
-                    errorCallback(response);
+                    errorCallback(response.status);
                 });
         };
     }

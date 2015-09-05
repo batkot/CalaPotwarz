@@ -5,11 +5,11 @@ var Controllers;
             this.$scope = $scope;
             this.initializer = initializer;
             $scope.game = this;
-            initializer.requestBoard(this.onBoardReceived, this.onServerError);
+            initializer.createGame(this.onGameCreated, this.onServerError);
         }
-        GameController.prototype.onBoardReceived = function (board) {
-            this.board = board;
-            console.log(board);
+        GameController.prototype.onGameCreated = function (game) {
+            this.game = game;
+            console.log(game);
         };
         GameController.prototype.onServerError = function (error) {
             console.log(error);

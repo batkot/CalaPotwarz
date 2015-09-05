@@ -1,18 +1,18 @@
 ﻿module Controllers {
     export class GameController {
-        private board: Models.Board;
+        private game: Models.Game;
 
         constructor(
             private $scope: Scopes.IAppScope,
             private initializer: Services.Initializer) {
 
             $scope.game = this;
-            initializer.requestBoard(this.onBoardReceived, this.onServerError);
+            initializer.createGame(this.onGameCreated, this.onServerError);
         }
 
-        onBoardReceived(board: Models.Board) {
-            this.board = board;
-            console.log(board);
+        onGameCreated(game: Models.Game) {
+            this.game = game;
+            console.log(game);
         }
 
         onServerError(error: any) {

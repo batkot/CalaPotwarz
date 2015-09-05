@@ -5,14 +5,12 @@ var Services;
             this.$http = $http;
         }
         ;
-        Initializer.prototype.requestBoard = function (successCallback, errorCallback) {
-            this.$http.get('/pinus').
+        Initializer.prototype.createGame = function (successCallback, errorCallback) {
+            this.$http.get('/api/Game').
                 then(function (response) {
-                console.log('all ok');
-                successCallback(response);
+                successCallback(response.data);
             }, function (response) {
-                console.log('error occured');
-                errorCallback(response);
+                errorCallback(response.status);
             });
         };
         ;

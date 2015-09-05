@@ -1022,7 +1022,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\app\bootstrapper.ts" />
     <TypeScriptCompile Include="Scripts\app\Controllers\GameController.ts" />
-    <TypeScriptCompile Include="Scripts\app\Models\Board.ts" />
+    <TypeScriptCompile Include="Scripts\app\Models\Game.ts" />
     <TypeScriptCompile Include="Scripts\app\Scopes\IAppScope.ts" />
     <TypeScriptCompile Include="Scripts\app\Services\Initializer.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
