@@ -12,9 +12,15 @@ namespace App.Domino
     {
         public GameModel Create()
         {
-            return new GameModel(
-                new DominoPiece(new DominoTile("Dog"), new DominoTile("Piece")),
-                new DominoPiece(new DominoTile("Piece"), new DominoTile("Tile")));
+            return new GameModel(Guid.NewGuid().ToString(),
+                4,
+                4,
+                new DominoTile("Animal"),
+                new DominoTile("Zavoir"),
+                new DominoPiece(new DominoTile("Zavoir"), new DominoTile("Animal")),
+                new DominoPiece(new DominoTile("Animal"), new DominoTile("Letter")),
+                new DominoPiece(new DominoTile("Zavoir"), new DominoTile("Letter")),
+                new DominoPiece(new DominoTile("People"), new DominoTile("Shoe")));
         }
     }
 }
