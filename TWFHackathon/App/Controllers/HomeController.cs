@@ -14,8 +14,10 @@ namespace App.Controllers
             return View();
         }
 
-        public ActionResult Game()
+        public ActionResult Game(string Size = "M")
         {
+            ViewBag.Size = Size;
+
             return View();
         }
     }
