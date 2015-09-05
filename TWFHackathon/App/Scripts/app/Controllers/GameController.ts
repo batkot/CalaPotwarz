@@ -14,6 +14,8 @@ module Controllers {
         }
 
         onGameCreated(game: Models.Game): void {
+            console.log("GAME");
+            console.log(game);
             this.game = this.$scope.game = game;
         }
 

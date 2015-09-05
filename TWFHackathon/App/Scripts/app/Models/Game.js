@@ -25,21 +25,22 @@ var Models;
     })();
     Models.Board = Board;
     var DominoPiece = (function () {
-        function DominoPiece(_tiles, _orientation) {
-            this._tiles = _tiles;
+        function DominoPiece(_firstTile, _secondTile, _orientation) {
+            this._firstTile = _firstTile;
+            this._secondTile = _secondTile;
             this._orientation = _orientation;
         }
         ;
         Object.defineProperty(DominoPiece.prototype, "firstTile", {
             get: function () {
-                return this._tiles[0];
+                return this._firstTile;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(DominoPiece.prototype, "secondTile", {
             get: function () {
-                return this._tiles[1];
+                return this._secondTile;
             },
             enumerable: true,
             configurable: true

@@ -53,12 +53,12 @@ namespace App.Domino.Model
             Assert.Equal(2, game.PlayerPieces.Length);
 
             var firstPiece = game.PlayerPieces[0];
-            Assert.Equal(beginCategory, firstPiece.UpperTile.Category);
-            Assert.Equal(middleCategory, firstPiece.LowerTile.Category);
+            Assert.Equal(beginCategory, firstPiece.FirstTile.Category);
+            Assert.Equal(middleCategory, firstPiece.SecondTile.Category);
 
             var secondPiece = game.PlayerPieces[1];
-            Assert.Equal(middleCategory, secondPiece.UpperTile.Category);
-            Assert.Equal(endCategory, secondPiece.LowerTile.Category);
+            Assert.Equal(middleCategory, secondPiece.FirstTile.Category);
+            Assert.Equal(endCategory, secondPiece.SecondTile.Category);
         }
 
         [Fact]
