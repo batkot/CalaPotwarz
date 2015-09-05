@@ -19,12 +19,22 @@
             </div>
         </div>
 
-        <div class="board-selected-piece-wrapper" ng-class="{ hidden: gc.game.SelectedPiece == null }">
-            <div class="domino-piece selected-piece enlarge domino-piece-vertical">
-                <div ng-attr="{{ gc.game.SelectedPiece.FirstTile.Category }}" class="domino-tile first-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.FirstTile.ImageUrl+')'}"></div>
-                <span class="domino-tile-separator"></span>
-                <div ng-attr="{{ gc.game.SelectedPiece.SecondTile.Category }}" class="domino-tile second-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.SecondTile.ImageUrl+')'}"></div>
-            </div>
+        <div class="board-selected-piece-wrapper" ng-class="{ hidden: gc.game.SelectedPiece == null, bringToView: gc.game.SelectedPiece.Bringing }">
+            <ul>
+                <li>
+                    <h1 class="rotateButton"><i class="fa fa-chevron-left" ng-click="rotateLeft"></i></h1>
+                </li>
+                <li>
+                    <div class="domino-piece selected-piece enlarge domino-piece-vertical">
+                        <div ng-attr="{{ gc.game.SelectedPiece.FirstTile.Category }}" class="domino-tile first-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.FirstTile.ImageUrl+')'}"></div>
+                        <span class="domino-tile-separator"></span>
+                        <div ng-attr="{{ gc.game.SelectedPiece.SecondTile.Category }}" class="domino-tile second-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.SecondTile.ImageUrl+')'}"></div>
+                    </div>
+                </li>
+                <li>
+                    <h1 class="rotateButton"><i class="fa fa-chevron-right" ng-click="rotateRight"></i></h1>
+                </li>
+            </ul>
         </div>
 
         <div class="board-inventory">

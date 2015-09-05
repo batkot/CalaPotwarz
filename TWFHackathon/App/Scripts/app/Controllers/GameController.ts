@@ -32,8 +32,9 @@ module Controllers {
 
         onPieceSelected(piece: Models.DominoPiece) {
             console.log(piece);
+
             this.game.SelectedPiece = piece;
-            piece.IsHighlighted = true;
+            piece.bring();
         }
 
         onPieceRotatedLeft(piece: Models.DominoPiece) {
