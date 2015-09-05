@@ -13,27 +13,40 @@
 
     export class Board {
         constructor(private _height: number, private _width: number ) {
-            this._fields = new DominoTile[_width, _height];
+            this.Cells = new Array<Array<BoardCell>>();
         }
 
-        private _fields: DominoTile[][];
+        public Cells: BoardCell[][];
 
         public getTile(x: number, y: number): DominoTile{
-            return this._fields[x][y];
+            var cell = this.Cells[x][y];
+            if (cell.isEmpty())
+                return null;
+            else
+                return cell.DominoTile;
         }
+    }
 
+    export class BoardCell {
+        constructor() {
+            this.DominoTile = null;
+        }
+        public DominoTile: DominoTile;
 
+        public isEmpty() : boolean{
+            return this.DominoTile == null;
+        }
     }
 
     export class DominoPiece {
-        constructor(private _tiles: DominoTile[], private _orientation: DominoPieceOrientation) { };
+        constructor(private _firstTile: DominoTile, private _secondTile: DominoTile, private _orientation: DominoPieceOrientation) { };
 
         get firstTile(): DominoTile {
-            return this._tiles[0];
+            return this._firstTile;
         }
 
         get secondTile(): DominoTile {
-            return this._tiles[1];
+            return this._secondTile;
         }
 
         get orientation(): DominoPieceOrientation {

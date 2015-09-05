@@ -5,6 +5,7 @@ module Controllers {
         public message: string;
         public error: Models.Error;
         public game: Models.Game;
+        public board: Models.Board;
 
         constructor(
             private $scope: Scopes.IAppScope,
@@ -14,7 +15,11 @@ module Controllers {
         }
 
         onGameCreated(game: Models.Game): void {
+            console.log("GAME");
+            console.log(game);
+
             this.game = this.$scope.game = game;
+            this.board = new Models.Board(game.Width, game.Height);
         }
 
         onServerError(error: Models.Error): void {

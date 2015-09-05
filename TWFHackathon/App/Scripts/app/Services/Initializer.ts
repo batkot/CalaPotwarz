@@ -10,8 +10,9 @@
         createGame(successCallback: Function, errorCallback: Function): void {
             this.$http.get('/api/Game').
                 then(function (response) {
-                    //tu se przejdz na swoj obiekt
-                    successCallback(response.data);
+                //tu se przejdz na swoj obiekt
+                console.log(response.data);
+                successCallback(response.data);
                 }, function (response) {
                     var error = new Models.Error(response.status, response.data.Message);
                     errorCallback(error);

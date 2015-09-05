@@ -2,7 +2,15 @@
     <div ng-controller="gameController as gc">
         <div class="board-wrapper">
             <div class="board vcenter fadeIn">
-                sialalala
+                <ul data-ng-repeat="row in gc.board.Cells">
+                    <li>
+                        <ul class="board-row" data-ng-repeat="cell in row">
+                            <li class="board-cell" ng-class="gc.board.CellClass">
+                                {{ cell }}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
 
