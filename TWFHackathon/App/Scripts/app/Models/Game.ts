@@ -37,7 +37,17 @@
                     column.push(new BoardCell(i, j));
                 }
             }
+
+            this.start_x = 0;
+            this.start_y = 0;
+            this.finish_x = _width - 1;
+            this.finish_y = _height - 1;
         }
+
+        private start_x: number;
+        private start_y: number;
+        private finish_x: number;
+        private finish_y: number;
 
         private _placedPieces: PieceCoordinates[];
 
@@ -49,6 +59,25 @@
                 return null;
             else
                 return cell.DominoTile;
+        }
+
+        public isSolved(): boolean {
+            return this.checkPathFrom(this.start_x, this.start_y, this.finish_x, this.finish_y);
+        }
+
+        public checkPathFrom(x: number, y: number, target_x : number, target_y : number): boolean {
+            if (this.isPartOfPath(x, y)) {
+                if (x == target_x && y == target_y) {
+                    return true;
+                } else {
+                    return this.isPartOfPath(x + 1, y) || this.isPartOfPath(x, y + 1);
+                }
+            }
+            return false;
+        }
+
+        public isPartOfPath(x: number, y: number) {
+            return this.isOnBoard(x,y) && !this.Cells[x][y].isEmpty();
         }
 
         public putPiece(piece: DominoPiece, x: number, y: number, placer: Services.DominoPiecePlacer): boolean {
