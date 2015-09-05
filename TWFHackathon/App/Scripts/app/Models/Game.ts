@@ -37,6 +37,7 @@
     export class Board {
         constructor(private _height: number, private _width: number, public StartTile: DominoTile, public FinishTile: DominoTile) {
             this.Cells = new Array<Array<BoardCell>>();
+
             for (var i = 0; i < _width; i++) {
                 var column = new Array<BoardCell>();
                 this.Cells.push(column);
