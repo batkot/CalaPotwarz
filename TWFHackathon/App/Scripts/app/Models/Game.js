@@ -12,10 +12,15 @@ var Models;
     })();
     Models.Game = Game;
     var Board = (function () {
-        function Board() {
+        function Board(_height, _width) {
+            this._height = _height;
+            this._width = _width;
+            this._fields = new Models.DominoTile[_width, _height];
         }
+        Board.prototype.getTile = function (x, y) {
+            return this._fields[x][y];
+        };
         return Board;
     })();
     Models.Board = Board;
 })(Models || (Models = {}));
-//# sourceMappingURL=Game.js.map

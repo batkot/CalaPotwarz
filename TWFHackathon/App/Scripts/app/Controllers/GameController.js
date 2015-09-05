@@ -19,4 +19,3 @@ var Controllers;
     })();
     Controllers.GameController = GameController;
 })(Controllers || (Controllers = {}));
-//# sourceMappingURL=GameController.js.map

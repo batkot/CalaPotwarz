@@ -11,7 +11,16 @@
     }
 
     export class Board {
-        constructor(
-            ) { }
+        constructor(private _height: number, private _width: number ) {
+            this._fields = new DominoTile[_width, _height];
+        }
+
+        private _fields: DominoTile[][];
+
+        public getTile(x: number, y: number): DominoTile{
+            return this._fields[x][y];
+        }
+
+
     }
 }
