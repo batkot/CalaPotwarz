@@ -7,8 +7,8 @@
                     <li>
                         <ul class="board-row-cells-collection">
                             <li class="board-cell-wrapper" data-ng-repeat="cell in row">
-                                <div class="board-cell"ng-click="gc.tryPutSelectedPiece(cell)">
-                                    <div class="domino-tile first-domino-tile" ng-style="{'background-image':'url('+cell.DominoTile.ImageUrl+')'}"></div>
+                                <div class="board-cell" ng-click="gc.tryPutSelectedPiece(cell)" ng-class="{ 'used-cell': cell.DominoTile != null }">
+                                    <div class="domino-tile placed-tile" ng-style="{'background-image':'url('+cell.DominoTile.ImageUrl+')'}"></div>
                                 </div>
                             </li>
                         </ul>
@@ -21,17 +21,17 @@
         <div class="board-selected-piece-wrapper non-selectable bringToView" ng-class="{ hidden: gc.game.SelectedPiece == null }">
             <ul>
                 <li>
-                    <h1 class="rotateButton"><i class="fa fa-chevron-left" ng-click="gc.onSelectedPieceRotatedLeft()"></i></h1>
+                    <h1 class="rotateButton" ng-click="gc.onSelectedPieceRotatedLeft()"><i class="fa fa-undo"></i></h1>
                 </li>
                 <li>
-                    <div class="domino-piece selected-piece enlarge" ng-class="{ 'domino-piece-vertical': gc.game.SelectedPiece.orientation == 1, 'domino-piece-horizontal': gc.game.SelectedPiece.orientation == 0 }">
+                    <div class="domino-piece selected-piece enlarge" ng-class="{ 'domino-piece-vertical': gc.game.SelectedPiece.Orientation == 1, 'domino-piece-horizontal': gc.game.SelectedPiece.Orientation == 0 }">
                         <div ng-attr="{{ gc.game.SelectedPiece.FirstTile.Category }}" class="domino-tile first-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.FirstTile.ImageUrl+')'}"></div>
                         <span class="domino-tile-separator"></span>
                         <div ng-attr="{{ gc.game.SelectedPiece.SecondTile.Category }}" class="domino-tile second-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.SecondTile.ImageUrl+')'}"></div>
                     </div>
                 </li>
                 <li>
-                    <h1 class="rotateButton"><i class="fa fa-chevron-right" ng-click="gc.onSelectedPieceRotatedRight()"></i></h1>
+                    <h1 class="rotateButton" ng-click="gc.onSelectedPieceRotatedRight()"><i class="fa fa-repeat"></i></h1>
                 </li>
             </ul>
         </div>

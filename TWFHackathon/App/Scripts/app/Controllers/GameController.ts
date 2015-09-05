@@ -29,6 +29,8 @@ module Controllers {
         }
 
         tryPutSelectedPiece(cell: Models.BoardCell): void {
+            console.log(cell);
+
             if (this.game.SelectedPiece != null) {
                 this.putPiece(this.game.SelectedPiece, cell.x, cell.y);
            } 
@@ -38,12 +40,12 @@ module Controllers {
             this.game.SelectedPiece = piece;
         }
 
-        onSelectedPieceRotatedLeft() {
+        onSelectedPieceRotatedRight() {
             this.game.SelectedPiece = this.pieceRotator.rotateLeft(this.game.SelectedPiece);
             console.log(this.game.SelectedPiece);
         }
 
-        onSelectedPieceRotatedRight() {
+        onSelectedPieceRotatedLeft() {
             this.game.SelectedPiece = this.pieceRotator.rotateRight(this.game.SelectedPiece);
             console.log(this.game.SelectedPiece);
         }

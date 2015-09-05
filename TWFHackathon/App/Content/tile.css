@@ -62,3 +62,10 @@
     right: 8px;
     top: 4px;
 }
+
+.placed-tile{
+    top: 8px;
+    left: 8px;
+    width: 48px;
+    height: 48px;
+}
