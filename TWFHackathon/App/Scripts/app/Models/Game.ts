@@ -68,14 +68,14 @@
                 if (x == target_x && y == target_y) {
                     return true;
                 } else {
-                    return this.isPartOfPath(x + 1, y) || this.isPartOfPath(x, y + 1);
+                    return this.checkPathFrom(x + 1, y, target_x, target_y) || this.checkPathFrom(x, y + 1, target_x, target_y);
                 }
             }
             return false;
         }
 
         public isPartOfPath(x: number, y: number) {
-            return this.isOnBoard(x,y) && !this.Cells[x][y].isEmpty();
+            return this.isOnBoard(x, y) && !(this.Cells[x][y].isEmpty());
         }
 
         public putPiece(piece: DominoPiece, x: number, y: number, placer: Services.DominoPiecePlacer): boolean {
