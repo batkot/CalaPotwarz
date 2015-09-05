@@ -1,5 +1,7 @@
 ﻿.domino-piece{
     position: relative;
+    background: #fff;
+    cursor: pointer;
 }
 
 .domino-tile {
@@ -9,14 +11,13 @@
 }
 
 .inactive-tile{
-    opacity: 0.75;
+    background: rgba(255, 255, 255, 0.75);
 }
 
 .board-inventory .domino-piece{
     float:left;
     width: 64px;
     height: 128px;
-    background: rgba(255, 255, 255, 0.5);
     border: 1px solid #fff;
     margin: 8px;
     position: relative;
