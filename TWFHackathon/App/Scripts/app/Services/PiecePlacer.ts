@@ -30,7 +30,7 @@
                 if (tileOnBoard == null) {
                     continue;
                 }
-                else if (tileOnBoard.category != tile.category) {
+                else if (tileOnBoard.Category != tile.Category) {
                     return false;
                 }
             }

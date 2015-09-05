@@ -197,11 +197,11 @@
         constructor(private _category: string, private _imageUrl: string) {
         }
 
-        get category(): string {
+        get Category(): string {
             return this._category;
         }
 
-        get imageUrl(): string {
+        get ImageUrl(): string {
             return this._imageUrl;
         }
     }

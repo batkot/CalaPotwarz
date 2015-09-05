@@ -22,6 +22,21 @@ module Controllers {
 
             this.game = this.$scope.game = game;
             this.board = new Models.Board(game.Width, game.Height);
+
+            var playerPieces: Models.DominoPiece[] = new Array<Models.DominoPiece>();
+            for (var i: number = 0; i < game.PlayerPieces.length; ++i) {
+                var piece: any = game.PlayerPieces[i];
+                var firstTile: Models.DominoTile = new Models.DominoTile(piece.FirstTile.Category, piece.FirstTile.ImageUrl);
+                var secondTile: Models.DominoTile = new Models.DominoTile(piece.SecondTile.Category, piece.SecondTile.ImageUrl);
+                var newPiece: Models.DominoPiece = new Models.DominoPiece(
+                    firstTile, secondTile, Models.DominoPieceOrientation.UpDown, piece.Id);
+
+                playerPieces.push(newPiece);
+            }
+
+            this.game = this.$scope.game = new Models.Game(null, playerPieces, game.Id, game.Name, game.Height, game.Width);
+            
+            console.log(this.game);
         }
 
         onServerError(error: Models.Error): void {
