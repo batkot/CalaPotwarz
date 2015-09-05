@@ -12,11 +12,18 @@
     }
 
     export class Board {
-        constructor(private _height: number, private _width: number ) {
-            this.Cells = new Array<Array<BoardCell>>();
+        constructor(private _height: number, private _width: number) {
+            this._cells = new Array<Array<BoardCell>>();
+            for (var i = 0; i < _width; i++) {
+                var column = new Array<BoardCell>();
+                this._cells.push(column);
+                for (var j = 0; j < _height; j++) {
+                    column.push(new BoardCell(i, j));
+                }
+            }
         }
 
-        public Cells: BoardCell[][];
+        private _cells: Array<Array<BoardCell>>;
 
         public getTile(x: number, y: number): DominoTile{
             var cell = this.Cells[x][y];
@@ -28,7 +35,7 @@
     }
 
     export class BoardCell {
-        constructor() {
+        constructor(public x : number, public y : number) {
             this.DominoTile = null;
         }
         public DominoTile: DominoTile;

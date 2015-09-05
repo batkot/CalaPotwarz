@@ -19,7 +19,6 @@ module Controllers {
 
             this.game = this.$scope.game = game;
             this.board = new Models.Board(game.Width, game.Height);
-
             console.log(this.board);
         }
 
