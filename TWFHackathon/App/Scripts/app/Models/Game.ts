@@ -38,9 +38,19 @@
                     column.push(new BoardCell(i, j));
                 }
             }
+
+            this.start_x = 0;
+            this.start_y = 0;
+            this.finish_x = _width - 1;
+            this.finish_y = _height - 1;
         }
 
-        private _placedPieces: PieceCoordinates[];
+        public PlacedPieces: PieceCoordinates[];
+        private start_x: number;
+        private start_y: number;
+        private finish_x: number;
+        private finish_y: number;
+
 
         public Cells: Array<Array<BoardCell>>;
 
@@ -50,6 +60,25 @@
                 return null;
             else
                 return cell.DominoTile;
+        }
+
+        public isSolved(): boolean {
+            return this.checkPathFrom(this.start_x, this.start_y, this.finish_x, this.finish_y);
+        }
+
+        public checkPathFrom(x: number, y: number, target_x : number, target_y : number): boolean {
+            if (this.isPartOfPath(x, y)) {
+                if (x == target_x && y == target_y) {
+                    return true;
+                } else {
+                    return this.isPartOfPath(x + 1, y) || this.isPartOfPath(x, y + 1);
+                }
+            }
+            return false;
+        }
+
+        public isPartOfPath(x: number, y: number) {
+            return this.isOnBoard(x,y) && !this.Cells[x][y].isEmpty();
         }
 
         public putPiece(piece: DominoPiece, x: number, y: number, placer: Services.DominoPiecePlacer): boolean {
@@ -64,7 +93,7 @@
             if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.canPlace(this, piece, x,y)) {
                 this.Cells[x][y].DominoTile = piece.firstTile;
                 this.Cells[second_x][second_y].DominoTile = piece.secondTile;
-                this._placedPieces.push(new PieceCoordinates(piece, x, y, second_x, second_y));
+                this.PlacedPieces.push(new PieceCoordinates(piece, x, y, second_x, second_y));
             }
             else
                 return false;
@@ -73,9 +102,9 @@
         public takePiece(x: number, y: number): DominoPiece {
             var pieceIndex: number = -1;
 
-            for (var i = 0; i < this._placedPieces.length; ++i){
-                var firstTileXY: any = this._placedPieces[i].FirstTileCoordinates;
-                var secondTileXY: any = this._placedPieces[i].SecondTileCoordinates;
+            for (var i = 0; i < this.PlacedPieces.length; ++i){
+                var firstTileXY: any = this.PlacedPieces[i].FirstTileCoordinates;
+                var secondTileXY: any = this.PlacedPieces[i].SecondTileCoordinates;
 
                 var isMatch: boolean = (firstTileXY.x == x && firstTileXY.y == y)
                     || (secondTileXY.x == x && secondTileXY.y == y);
@@ -87,8 +116,8 @@
             }
 
             if (pieceIndex > 0) {
-                var piece: DominoPiece = this._placedPieces[pieceIndex].Piece;
-                this._placedPieces.splice(pieceIndex, 1);
+                var piece: DominoPiece = this.PlacedPieces[pieceIndex].Piece;
+                this.PlacedPieces.splice(pieceIndex, 1);
                 return piece;
             }
 
