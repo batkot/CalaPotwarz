@@ -51,7 +51,7 @@
                 return cell.DominoTile;
         }
 
-        public putPiece(piece: DominoPiece, x: number, y: number) : boolean {
+        public putPiece(piece: DominoPiece, x: number, y: number, placer: Services.DominoPiecePlacer): boolean {
             var second_x = x;
             var second_y = y + 1;
 
@@ -60,7 +60,7 @@
                 second_y = y;
             }
 
-            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y)) {
+            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.place(this, piece, x,y)) {
                 this.Cells[x][y].DominoTile = piece.firstTile;
                 this.Cells[second_x][second_y].DominoTile = piece.secondTile;
                 this._placedPieces.push(new PieceCoordinates(piece, x, y, second_x, second_y));

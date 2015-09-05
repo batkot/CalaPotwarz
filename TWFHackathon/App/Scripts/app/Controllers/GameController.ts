@@ -9,7 +9,8 @@ module Controllers {
 
         constructor(
             private $scope: Scopes.IAppScope,
-            private initializer: Services.Initializer) {
+            private initializer: Services.Initializer,
+            private piecePlacer: Services.DominoPiecePlacer) {
 
             initializer.createGame((g) => this.onGameCreated(g), (e) => this.onServerError(e));
         }
@@ -29,7 +30,7 @@ module Controllers {
 
         putPiece(pieceId: string, x: number, y: number): void {
             var piece = this.game.getPiece(pieceId);
-            if (this.board.putPiece(piece, x, y)) {
+            if (this.board.putPiece(piece, x, y, this.piecePlacer)) {
                 this.game.removePiece(pieceId);
             }
         }
