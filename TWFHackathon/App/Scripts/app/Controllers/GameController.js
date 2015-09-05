@@ -13,10 +13,10 @@ var Controllers;
         };
         GameController.prototype.onServerError = function (error) {
             this.error = error;
+            console.log(error);
             $("#errorModal").modal('show');
         };
         return GameController;
     })();
     Controllers.GameController = GameController;
 })(Controllers || (Controllers = {}));
-//# sourceMappingURL=GameController.js.map
