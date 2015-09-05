@@ -2,12 +2,14 @@
 {
     public class DominoTile
     {
+        public string ImageUrl { get; set; }
         //Somekind of image data
         public string Category { get; set; }
 
-        public DominoTile(string category)
+        public DominoTile(string category, string imageUrl)
         {
             Category = category;
+            ImageUrl = imageUrl;
         }
     }
 
