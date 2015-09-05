@@ -15,7 +15,7 @@ namespace App.Controllers.Api
 
         public GameModel Get()
         {
-            return _gameCreator.Create(3,3,3);
+            return _gameCreator.Create(4,4,10);
         }
     }
 }
