@@ -118,11 +118,16 @@
 .win-message{
     position: absolute;
     text-align: center;
-    background: rgba(255, 0, 0, 0.70);
+    background: rgba(96, 255, 0, 0.75);
     width: 100%;
     height: 100%;
 }
 
 .win-message{
-    font-weight: 600;
+    font-weight: bold;
+}
+
+.win-message > div{
+    background: #fff;
+    padding: 64px;
 }
