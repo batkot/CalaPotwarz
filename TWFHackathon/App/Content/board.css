@@ -89,6 +89,11 @@
     cursor: pointer;
 }
 
+.removeButton{
+    color: #fff;
+    cursor: pointer;
+}
+
 .used-cell{
     background: #fff;
     position: absolute;
@@ -108,4 +113,16 @@
     height: 64px;
     width: 64px;
     background-position: center;
+}
+
+.win-message{
+    position: absolute;
+    text-align: center;
+    background: rgba(255, 0, 0, 0.70);
+    width: 100%;
+    height: 100%;
+}
+
+.win-message{
+    font-weight: 600;
 }

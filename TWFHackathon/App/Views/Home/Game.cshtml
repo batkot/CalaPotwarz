@@ -40,6 +40,7 @@
                     <h1 class="rotateButton" ng-click="gc.onSelectedPieceRotatedRight()"><i class="fa fa-repeat"></i></h1>
                 </li>
             </ul>
+            <h1 class="removeButton" ng-click="gc.onRemoveSelected()"><i class="fa fa-trash-o"></i></h1>
         </div>
 
         <div class="board-inventory">
@@ -48,6 +49,10 @@
                 <span class="domino-tile-separator"></span>
                 <div ng-attr="{{ piece.SecondTile.Category }}" class="domino-tile second-domino-tile" ng-style="{'background-image':'url('+piece.SecondTile.ImageUrl+')'}"></div>
             </div>
+        </div>
+
+        <div class="win-message" ng-class="{ 'hidden': gc.board.IsSolved != true, 'bringToView': gc.board.IsSolved }">
+            <div class="center-text vcenter"><h1>Udało Ci się! Brawo!</h1></div>
         </div>
 
         <!-- Modal -->
