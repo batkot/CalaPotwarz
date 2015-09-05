@@ -39,6 +39,8 @@
             }
         }
 
+        private _placedPieces: PieceCoordinates[];
+
         public Cells: Array<Array<BoardCell>>;
 
         public getTile(x: number, y: number): DominoTile{
@@ -61,9 +63,35 @@
             if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y)) {
                 this.Cells[x][y].DominoTile = piece.firstTile;
                 this.Cells[second_x][second_y].DominoTile = piece.secondTile;
+                this._placedPieces.push(new PieceCoordinates(piece, x, y, second_x, second_y));
             }
             else
                 return false;
+        }
+
+        public takePiece(x: number, y: number): DominoPiece {
+            var pieceIndex: number = -1;
+
+            for (var i = 0; i < this._placedPieces.length; ++i){
+                var firstTileXY: any = this._placedPieces[i].FirstTileCoordinates;
+                var secondTileXY: any = this._placedPieces[i].SecondTileCoordinates;
+
+                var isMatch: boolean = (firstTileXY.x == x && firstTileXY.y == y)
+                    || (secondTileXY.x == x && secondTileXY.y == y);
+
+                if (isMatch) {
+                    pieceIndex = i;
+                    break;
+                }
+            }
+
+            if (pieceIndex > 0) {
+                var piece: DominoPiece = this._placedPieces[pieceIndex].Piece;
+                this._placedPieces.splice(pieceIndex, 1);
+                return piece;
+            }
+
+            return null;
         }
 
         private isOnBoard(x: number, y: number): boolean {
@@ -83,6 +111,24 @@
 
         public isEmpty() : boolean{
             return this.DominoTile == null;
+        }
+    }
+
+    class PieceCoordinates {
+        constructor(private _piece: DominoPiece,
+            private _x1: number, private _y1: number,
+            private _x2: number, private _y2: number) { }
+
+        get Piece(): DominoPiece {
+            return this._piece;
+        }
+
+        get FirstTileCoordinates(): any {
+            return { x: this._x1, y: this._y1 };
+        }
+
+        get SecondTileCoordinates(): any {
+            return { x: this._x2, y: this._y2 };
         }
     }
 
