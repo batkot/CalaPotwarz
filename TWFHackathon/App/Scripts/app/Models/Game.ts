@@ -207,7 +207,7 @@
     }
 
     export enum DominoPieceOrientation {
-        UpDown,
+        UpDown = 0,
         LeftRight,
     }
 
