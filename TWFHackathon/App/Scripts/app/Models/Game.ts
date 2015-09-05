@@ -61,7 +61,7 @@
                 second_y = y;
             }
 
-            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.place(this, piece, x,y)) {
+            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.canPlace(this, piece, x,y)) {
                 this.Cells[x][y].DominoTile = piece.firstTile;
                 this.Cells[second_x][second_y].DominoTile = piece.secondTile;
                 this._placedPieces.push(new PieceCoordinates(piece, x, y, second_x, second_y));
