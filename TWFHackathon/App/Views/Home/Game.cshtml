@@ -6,10 +6,8 @@
                     <li>
                         <ul class="board-row-cells-collection">
                             <li class="board-cell-wrapper" data-ng-repeat="cell in row">
-                                <div class="board-cell">
-                                    <div class="domino-tile">
-
-                                    </div>
+                                <div class="board-cell"ng-click="gc.tryPutSelectedPiece(cell)">
+                                    <div class="domino-tile first-domino-tile" ng-style="{'background-image':'url('+cell.DominoTile.ImageUrl+')'}"></div>
                                 </div>
                             </li>
                         </ul>

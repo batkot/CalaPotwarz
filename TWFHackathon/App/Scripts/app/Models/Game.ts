@@ -11,20 +11,15 @@
             public Width: number
             ) { }
 
-        getPiece(pieceId: string): DominoPiece {
+        public getPiece(pieceId: string): DominoPiece {
             for (var piece in this.PlayerPieces) {
                 if (piece.Id == pieceId)
                     return piece;
             }
         }
 
-        removePiece(pieceId: string): void {
-            for (var i = 0; i < this.PlayerPieces.length; i++) {
-                if (this.PlayerPieces[i].Id == pieceId) {
-                    this.PlayerPieces.splice(i, 1);
-                    return;
-                }
-            }
+        public removePiece(piece: DominoPiece): void {
+            this.PlayerPieces.splice(this.PlayerPieces.indexOf(piece), 1);
         }
     }
 
@@ -43,9 +38,10 @@
             this.start_y = 0;
             this.finish_x = _width - 1;
             this.finish_y = _height - 1;
+            this.PlacedPieces = new Array<PieceCoordinates>();
         }
 
-        public PlacedPieces: PieceCoordinates[];
+        public PlacedPieces: Array<PieceCoordinates>;
         private start_x: number;
         private start_y: number;
         private finish_x: number;
@@ -53,6 +49,7 @@
 
 
         public Cells: Array<Array<BoardCell>>;
+        public IsSolved: boolean;
 
         public getTile(x: number, y: number): DominoTile{
             var cell = this.Cells[x][y];
@@ -85,15 +82,18 @@
             var second_x = x;
             var second_y = y + 1;
 
-            if (piece.orientation == DominoPieceOrientation.LeftRight) {
+            if (piece.Orientation == DominoPieceOrientation.LeftRight) {
                 second_x = x + 1;
                 second_y = y;
             }
 
-            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.canPlace(this, piece, x,y)) {
-                this.Cells[x][y].DominoTile = piece.firstTile;
-                this.Cells[second_x][second_y].DominoTile = piece.secondTile;
+            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y)) {
+                this.Cells[x][y].DominoTile = piece.FirstTile;
+                console.log(piece);
+                console.log(this.Cells[x][y].DominoTile);
+                this.Cells[second_x][second_y].DominoTile = piece.SecondTile;
                 this.PlacedPieces.push(new PieceCoordinates(piece, x, y, second_x, second_y));
+                return true;
             }
             else
                 return false;
@@ -115,7 +115,7 @@
                 }
             }
 
-            if (pieceIndex > 0) {
+            if (pieceIndex > 0){ 
                 var piece: DominoPiece = this.PlacedPieces[pieceIndex].Piece;
                 this.PlacedPieces.splice(pieceIndex, 1);
                 return piece;
@@ -167,15 +167,15 @@
 
         constructor(private _firstTile: DominoTile, private _secondTile: DominoTile, private _orientation: DominoPieceOrientation, private _id: string) { };
 
-        get firstTile(): DominoTile {
+        get FirstTile(): DominoTile {
             return this._firstTile;
         }
 
-        get secondTile(): DominoTile {
+        get SecondTile(): DominoTile {
             return this._secondTile;
         }
 
-        get orientation(): DominoPieceOrientation {
+        get Orientation(): DominoPieceOrientation {
             return this._orientation;
         }
 
