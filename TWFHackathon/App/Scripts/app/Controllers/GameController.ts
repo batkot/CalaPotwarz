@@ -9,7 +9,8 @@ module Controllers {
 
         constructor(
             private $scope: Scopes.IAppScope,
-            private initializer: Services.Initializer) {
+            private initializer: Services.Initializer,
+            private piecePlacer: Services.DominoPiecePlacer) {
 
             initializer.createGame((g) => this.onGameCreated(g), (e) => this.onServerError(e));
         }
@@ -19,7 +20,8 @@ module Controllers {
 
             this.game = this.$scope.game = game;
             this.board = new Models.Board(game.Width, game.Height);
-            console.log(this.board);
+
+            console.log(this.game);
         }
 
         onServerError(error: Models.Error): void {
@@ -27,9 +29,15 @@ module Controllers {
             $("#errorModal").modal('show');
         }
 
+        onPieceSelected(piece: Models.DominoPiece) {
+            console.log(piece);
+            this.game.SelectedPiece = piece;
+            piece.IsHighlighted = true;
+        }
+
         putPiece(pieceId: string, x: number, y: number): void {
             var piece = this.game.getPiece(pieceId);
-            if (this.board.putPiece(piece, x, y)) {
+            if (this.board.putPiece(piece, x, y, this.piecePlacer)) {
                 this.game.removePiece(pieceId);
             }
         }

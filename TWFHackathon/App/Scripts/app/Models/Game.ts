@@ -3,7 +3,8 @@
 
     export class Game {
         constructor(
-            public PlayerPieces: Array<DominoPiece>,
+            public SelectedPiece: DominoPiece,
+            public PlayerPieces: DominoPiece[],
             public Id: string,
             public Name: string,
             public Height: number,
@@ -51,7 +52,7 @@
                 return cell.DominoTile;
         }
 
-        public putPiece(piece: DominoPiece, x: number, y: number) : boolean {
+        public putPiece(piece: DominoPiece, x: number, y: number, placer: Services.DominoPiecePlacer): boolean {
             var second_x = x;
             var second_y = y + 1;
 
@@ -60,7 +61,7 @@
                 second_y = y;
             }
 
-            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y)) {
+            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.canPlace(this, piece, x,y)) {
                 this.Cells[x][y].DominoTile = piece.firstTile;
                 this.Cells[second_x][second_y].DominoTile = piece.secondTile;
                 this.PlacedPieces.push(new PieceCoordinates(piece, x, y, second_x, second_y));
@@ -133,7 +134,9 @@
     }
 
     export class DominoPiece {
-        constructor(private _firstTile: DominoTile, private _secondTile: DominoTile, private _orientation: DominoPieceOrientation, private _id : string) { };
+        public IsHighlighted: boolean = false;
+
+        constructor(private _firstTile: DominoTile, private _secondTile: DominoTile, private _orientation: DominoPieceOrientation, private _id: string) { };
 
         get firstTile(): DominoTile {
             return this._firstTile;
