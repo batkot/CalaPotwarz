@@ -26,7 +26,7 @@
         private _cells: Array<Array<BoardCell>>;
 
         public getTile(x: number, y: number): DominoTile{
-            var cell = this._cells[x][y];
+            var cell = this.Cells[x][y];
             if (cell.isEmpty())
                 return null;
             else
