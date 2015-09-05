@@ -69,12 +69,12 @@ module Controllers {
             this.game.SelectedPiece = piece;
         }
 
-        onSelectedPieceRotatedRight() {
+        onSelectedPieceRotatedLeft() {
             this.game.SelectedPiece = this.pieceRotator.rotateLeft(this.game.SelectedPiece);
             console.log(this.game.SelectedPiece);
         }
 
-        onSelectedPieceRotatedLeft() {
+        onSelectedPieceRotatedRight() {
             this.game.SelectedPiece = this.pieceRotator.rotateRight(this.game.SelectedPiece);
             console.log(this.game.SelectedPiece);
         }

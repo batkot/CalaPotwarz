@@ -101,7 +101,7 @@
             var second_x = x;
             var second_y = y + 1;
 
-            if (piece.Orientation == DominoPieceOrientation.LeftRight) {
+            if (piece.Orientation == DominoPieceOrientation.UpDown) {
                 second_x = x + 1;
                 second_y = y;
             }

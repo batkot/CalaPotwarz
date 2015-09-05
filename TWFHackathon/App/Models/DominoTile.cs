@@ -27,6 +27,7 @@ namespace App.Models
             Id = Guid.NewGuid().ToString();
             FirstTile = firstTile;
             SecondTile = secondTile;
+            Orientation = DominoOrientation.UppDown;
         }
     }
 

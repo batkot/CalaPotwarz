@@ -31,7 +31,7 @@
                     <h1 class="rotateButton" ng-click="gc.onSelectedPieceRotatedLeft()"><i class="fa fa-undo"></i></h1>
                 </li>
                 <li>
-                    <div class="domino-piece selected-piece enlarge" ng-class="{ 'domino-piece-vertical': gc.game.SelectedPiece.Orientation == 1, 'domino-piece-horizontal': gc.game.SelectedPiece.Orientation == 0 }">
+                    <div class="domino-piece selected-piece enlarge" ng-class="{ 'domino-piece-vertical': gc.game.SelectedPiece.Orientation == 0, 'domino-piece-horizontal': gc.game.SelectedPiece.Orientation == 1 }">
                         <div ng-attr="{{ gc.game.SelectedPiece.FirstTile.Category }}" class="domino-tile first-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.FirstTile.ImageUrl+')'}"></div>
                         <span class="domino-tile-separator"></span>
                         <div ng-attr="{{ gc.game.SelectedPiece.SecondTile.Category }}" class="domino-tile second-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.SecondTile.ImageUrl+')'}"></div>
@@ -58,7 +58,8 @@
                     <i class="fa fa-trophy"></i><br/>
                     Udało Ci się! Brawo!
                     <br />
-                    <i class="fa fa-star" data-ng-repeat="start in gc.score"></i>
+                    <i class="fa fa-star" data-ng-repeat="start in gc.score"></i><br/>
+                    <a href="@Url.Action("Index", "Home")">Zagraj ponownie</a>
                 </h1>
             </div>
         </div>
