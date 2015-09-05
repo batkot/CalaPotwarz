@@ -28,6 +28,10 @@
                 }
             }
         }
+
+        public addPiece(piece: DominoPiece): void {
+            this.PlayerPieces.push(piece);
+        }
     }
 
     export class Board {
@@ -59,6 +63,8 @@
         public IsSolved: boolean;
 
         public getTile(x: number, y: number): DominoTile{
+            if (x < 0 || y < 0 || x >= this._width || y >= this._height)
+                return null;
             var cell = this.Cells[x][y];
             if (cell == null || cell == undefined || cell.isEmpty())
                 return null;
@@ -94,7 +100,7 @@
                 second_y = y;
             }
 
-            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y)) {
+            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.canPlace(this,piece, x,y)) {
                 this.Cells[x][y].DominoTile = piece.FirstTile;
                 console.log(piece);
                 console.log(this.Cells[x][y].DominoTile);
@@ -124,6 +130,10 @@
 
             if (pieceIndex > 0){ 
                 var piece: DominoPiece = this.PlacedPieces[pieceIndex].Piece;
+                var firstTile = this.PlacedPieces[pieceIndex].FirstTileCoordinates;
+                this.Cells[firstTile.x][firstTile.y].DominoTile = null;
+                var secondTile = this.PlacedPieces[pieceIndex].SecondTileCoordinates;
+                this.Cells[secondTile.x][secondTile.y].DominoTile = null;
                 this.PlacedPieces.splice(pieceIndex, 1);
                 return piece;
             }

@@ -47,12 +47,20 @@ module Controllers {
         }
 
         tryPutSelectedPiece(cell: Models.BoardCell): void {
-            console.log(cell);
-
             if (this.game.SelectedPiece != null) {
                 this.putPiece(this.game.SelectedPiece, cell.x, cell.y);
-           } 
+            } else {
+                this.tryRemovePiece(cell);
+            }
         }
+
+        tryRemovePiece(cell: Models.BoardCell): void {
+            var piece: Models.DominoPiece = this.board.takePiece(cell.x, cell.y);
+            if (piece != null) {
+                this.game.addPiece(piece);
+            }
+        }
+
 
         onPieceSelected(piece: Models.DominoPiece) {
             this.game.SelectedPiece = piece;
