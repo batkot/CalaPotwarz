@@ -1,4 +1,11 @@
-﻿.board-wrapper {
+﻿.flying-header{
+    position: absolute;
+    right: 64px;
+    top: 0;
+    color: #fff;
+}
+
+.board-wrapper {
     position: absolute;
     padding: 64px;
     width: 100%;
