@@ -6,12 +6,12 @@ namespace App.Domino
 {
     public class GameBuilder : ICanCreateGame
     {
-        private readonly ICategoriesProvider _categoriesProvider;
+        private readonly ICanDrawDominoTile _tileProvider;
         private readonly ICanFindPath _pathFinder;
 
-        public GameBuilder(ICategoriesProvider provider, ICanFindPath pathFinder)
+        public GameBuilder(ICanDrawDominoTile provider, ICanFindPath pathFinder)
         {
-            _categoriesProvider = provider;
+            _tileProvider = provider;
             _pathFinder = pathFinder;
         }
 
@@ -22,8 +22,8 @@ namespace App.Domino
 
             var id = Guid.NewGuid().ToString();
 
-            var startTile = new DominoTile(_categoriesProvider.DrawCategory(), "");
-            var finishTile = new DominoTile(_categoriesProvider.DrawCategory(), "");
+            var startTile = _tileProvider.DrawTile();
+            var finishTile = _tileProvider.DrawTile();
 
             var suggestedPath = _pathFinder.FindPath(width, height);
             var minimumPathPieces = new List<DominoPiece>();
@@ -31,7 +31,7 @@ namespace App.Domino
 
             for (int i = 0; i < suggestedPath.MinimumRequiredPieces - 1; i++)
             {
-                var secondTile = GetNextTile();
+                var secondTile = _tileProvider.DrawTile();
                 minimumPathPieces.Add(new DominoPiece(lastTile, secondTile));
                 lastTile = secondTile;
             }
@@ -39,15 +39,9 @@ namespace App.Domino
             minimumPathPieces.Add(new DominoPiece(lastTile, finishTile));
 
             for(int i = 0; i < additionalPieceCount; i++)
-                minimumPathPieces.Add(new DominoPiece(GetNextTile(), GetNextTile()));
+                minimumPathPieces.Add(new DominoPiece(_tileProvider.DrawTile(), _tileProvider.DrawTile()));
 
             return new GameModel(id, width, height, startTile, finishTile, minimumPathPieces.ToArray());
-        }
-
-        private DominoTile GetNextTile()
-        {
-            var category = _categoriesProvider.DrawCategory();
-            return new DominoTile(category, "");
         }
     }
 }
