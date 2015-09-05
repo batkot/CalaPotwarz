@@ -4,7 +4,7 @@
     {
         public SuggestedPath FindPath(int width, int height)
         {
-            return null;
+            return new SuggestedPath { MinimumRequiredPieces = 5 };
         }
     }
 }

@@ -64,26 +64,12 @@ namespace App.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<List<string>>().ToConstant(new List<string>
-            {
-                "Animals",
-                "Shoes",
-                "People",
-                "Aircrafts",
-                "Buildings",
-                "Letters",
-                "Numbers",
-                "Automotive",
-                "Flowers",
-                "Phones"
-            }).WhenInjectedExactlyInto<CategoriesProvider>();
-
             kernel.Bind(scan =>
             {
                 scan
                 .FromThisAssembly()
                 .SelectAllClasses()
-                .Excluding<GameBuilder>()
+                .Excluding<MockGameCreator>()
                 .BindAllInterfaces();
             });
         }

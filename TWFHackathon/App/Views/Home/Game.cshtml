@@ -2,15 +2,26 @@
     <div ng-controller="gameController as gc">
         <div class="board-wrapper">
             <div class="board vcenter fadeIn">
-                <ul data-ng-repeat="row in gc.board.Cells">
+                <ul class="board-row" data-ng-repeat="row in gc.board.Cells">
                     <li>
-                        <ul class="board-row" data-ng-repeat="cell in row">
-                            <li class="board-cell" ng-class="gc.board.CellClass">
-                                {{ cell }}
+                        <ul class="board-row-cells-collection">
+                            <li class="board-cell-wrapper" data-ng-repeat="cell in row">
+                                <div class="board-cell">
+                                    <div class="domino-tile">
+
+                                    </div>
+                                </div>
                             </li>
-                        </ul>
+                        </ul="board-cell-collection">
                     </li>
                 </ul>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="board-inventory">
+            <div data-ng-repeat="piece in gc.game.PlayerPieces" class="domino-piece inactive-tile">
+                <div class="domino-tile upper-domino-tile">{{ piece.firstTile }}</div>
+                <div class="domino-tile bottom-domino-tile">{{ piece.secondTile }}</div>
             </div>
         </div>
 

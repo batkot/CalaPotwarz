@@ -169,6 +169,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Domino\BasicPathFinder.cs" />
     <Compile Include="Domino\CategoriesProvider.cs" />
+    <Compile Include="Domino\Category.cs" />
     <Compile Include="Domino\GameBuilder.cs" />
     <Compile Include="Domino\ICanFindPath.cs" />
     <Compile Include="Domino\ICategoriesProvider.cs" />
@@ -210,10 +211,10 @@
     <Content Include="Content\gfx\pics\flower\flower2.png" />
     <Content Include="Content\gfx\pics\flower\flower3.png" />
     <Content Include="Content\gfx\pics\flower\flower4.png" />
-    <Content Include="Content\gfx\pics\land vehicle\bicycle.png" />
-    <Content Include="Content\gfx\pics\land vehicle\car1.png" />
-    <Content Include="Content\gfx\pics\land vehicle\car2.png" />
-    <Content Include="Content\gfx\pics\land vehicle\motorcycle.png" />
+    <Content Include="Content\gfx\pics\land_vehicle\bicycle.png" />
+    <Content Include="Content\gfx\pics\land_vehicle\car1.png" />
+    <Content Include="Content\gfx\pics\land_vehicle\car2.png" />
+    <Content Include="Content\gfx\pics\land_vehicle\motorcycle.png" />
     <Content Include="Content\gfx\pics\letter\A.png" />
     <Content Include="Content\gfx\pics\letter\B.png" />
     <Content Include="Content\gfx\pics\letter\C.png" />
@@ -235,6 +236,7 @@
     <Content Include="Content\gfx\pics\shoe\shoe3.png" />
     <Content Include="Content\gfx\pics\shoe\shoe4.png" />
     <Content Include="Content\menu.css" />
+    <Content Include="Content\tile.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
