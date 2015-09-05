@@ -5,16 +5,12 @@ namespace App.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IFoo _foo;
-
-        public HomeController(IFoo foo)
+        public HomeController()
         {
-            _foo = foo;
         }
 
         public ActionResult Index()
         {
-            ViewBag.Text = _foo.DoStuff();
             return View();
         }
     }
