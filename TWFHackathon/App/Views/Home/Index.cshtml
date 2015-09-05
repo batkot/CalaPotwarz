@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div ng-app="app" background="green">
+    <div ng-controller="shellController as sc">
+        {{ sc.message }}
+    </div>
+</div>
+
+@section scripts{ 
+    @Scripts.Render("~/bundles/app")
+}
+@*<div class="row">
+    <div class="col-md-4">*@
