@@ -8,7 +8,9 @@
             public Id: string,
             public Name: string,
             public Height: number,
-            public Width: number
+            public Width: number,
+            public StartingTile: DominoTile,
+            public FinishingTile: DominoTile
             ) { }
 
         public getPiece(pieceId: string): DominoPiece {
@@ -19,12 +21,17 @@
         }
 
         public removePiece(piece: DominoPiece): void {
-            this.PlayerPieces.splice(this.PlayerPieces.indexOf(piece), 1);
+            for (var i = 0; i < this.PlayerPieces.length; i++) {
+                if (this.PlayerPieces[i].Id == piece.Id) {
+                    this.PlayerPieces.splice(i, 1);
+                    return;
+                }
+            }
         }
     }
 
     export class Board {
-        constructor(private _height: number, private _width: number) {
+        constructor(private _height: number, private _width: number, public StartTile: DominoTile, public FinishTile: DominoTile) {
             this.Cells = new Array<Array<BoardCell>>();
             for (var i = 0; i < _width; i++) {
                 var column = new Array<BoardCell>();
@@ -46,7 +53,6 @@
         private start_y: number;
         private finish_x: number;
         private finish_y: number;
-
 
         public Cells: Array<Array<BoardCell>>;
         public IsSolved: boolean;
@@ -87,7 +93,7 @@
                 second_y = y;
             }
 
-            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.canPlace(this, piece, x,y)) {
+            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y)) {
                 this.Cells[x][y].DominoTile = piece.FirstTile;
                 console.log(piece);
                 console.log(this.Cells[x][y].DominoTile);
