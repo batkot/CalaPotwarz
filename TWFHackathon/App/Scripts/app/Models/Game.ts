@@ -3,7 +3,8 @@
 
     export class Game {
         constructor(
-            public PlayerPieces: Array<DominoPiece>,
+            public SelectedPiece: DominoPiece,
+            public PlayerPieces: DominoPiece[],
             public Id: string,
             public Name: string,
             public Height: number,
@@ -44,12 +45,12 @@
             this.finish_y = _height - 1;
         }
 
+        public PlacedPieces: PieceCoordinates[];
         private start_x: number;
         private start_y: number;
         private finish_x: number;
         private finish_y: number;
 
-        private _placedPieces: PieceCoordinates[];
 
         public Cells: Array<Array<BoardCell>>;
 
@@ -89,10 +90,10 @@
                 second_y = y;
             }
 
-            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.place(this, piece, x,y)) {
+            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.canPlace(this, piece, x,y)) {
                 this.Cells[x][y].DominoTile = piece.firstTile;
                 this.Cells[second_x][second_y].DominoTile = piece.secondTile;
-                this._placedPieces.push(new PieceCoordinates(piece, x, y, second_x, second_y));
+                this.PlacedPieces.push(new PieceCoordinates(piece, x, y, second_x, second_y));
             }
             else
                 return false;
@@ -101,9 +102,9 @@
         public takePiece(x: number, y: number): DominoPiece {
             var pieceIndex: number = -1;
 
-            for (var i = 0; i < this._placedPieces.length; ++i){
-                var firstTileXY: any = this._placedPieces[i].FirstTileCoordinates;
-                var secondTileXY: any = this._placedPieces[i].SecondTileCoordinates;
+            for (var i = 0; i < this.PlacedPieces.length; ++i){
+                var firstTileXY: any = this.PlacedPieces[i].FirstTileCoordinates;
+                var secondTileXY: any = this.PlacedPieces[i].SecondTileCoordinates;
 
                 var isMatch: boolean = (firstTileXY.x == x && firstTileXY.y == y)
                     || (secondTileXY.x == x && secondTileXY.y == y);
@@ -115,8 +116,8 @@
             }
 
             if (pieceIndex > 0) {
-                var piece: DominoPiece = this._placedPieces[pieceIndex].Piece;
-                this._placedPieces.splice(pieceIndex, 1);
+                var piece: DominoPiece = this.PlacedPieces[pieceIndex].Piece;
+                this.PlacedPieces.splice(pieceIndex, 1);
                 return piece;
             }
 
@@ -162,7 +163,9 @@
     }
 
     export class DominoPiece {
-        constructor(private _firstTile: DominoTile, private _secondTile: DominoTile, private _orientation: DominoPieceOrientation, private _id : string) { };
+        public IsHighlighted: boolean = false;
+
+        constructor(private _firstTile: DominoTile, private _secondTile: DominoTile, private _orientation: DominoPieceOrientation, private _id: string) { };
 
         get firstTile(): DominoTile {
             return this._firstTile;

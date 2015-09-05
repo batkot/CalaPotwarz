@@ -194,6 +194,7 @@
     <Content Include="Content\common.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\gfx\blackPoint.png" />
     <Content Include="Content\gfx\menuBck.jpg" />
     <Content Include="Content\gfx\pics\animal\cat1.png" />
     <Content Include="Content\gfx\pics\animal\cat2.png" />
@@ -235,6 +236,7 @@
     <Content Include="Content\gfx\pics\shoe\shoe2.png" />
     <Content Include="Content\gfx\pics\shoe\shoe3.png" />
     <Content Include="Content\gfx\pics\shoe\shoe4.png" />
+    <Content Include="Content\gfx\whitePoint.png" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\tile.css" />
     <Content Include="favicon.ico" />

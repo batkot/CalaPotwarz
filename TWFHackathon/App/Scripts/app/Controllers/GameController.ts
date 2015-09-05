@@ -20,12 +20,19 @@ module Controllers {
 
             this.game = this.$scope.game = game;
             this.board = new Models.Board(game.Width, game.Height);
-            console.log(this.board);
+
+            console.log(this.game);
         }
 
         onServerError(error: Models.Error): void {
             this.error = error;
             $("#errorModal").modal('show');
+        }
+
+        onPieceSelected(piece: Models.DominoPiece) {
+            console.log(piece);
+            this.game.SelectedPiece = piece;
+            piece.IsHighlighted = true;
         }
 
         putPiece(pieceId: string, x: number, y: number): void {

@@ -41,7 +41,7 @@ namespace App.Domino
         private DominoTile DrawFromCategory(Category cat)
         {
             var picture = cat.Pictures[_rand.Next(cat.Pictures.Count)];
-            var picturePath = string.Format(@"gfx/pics/{0}/{1}", cat.Name, picture);
+            var picturePath = string.Format(@"../Content/gfx/pics/{0}/{1}", cat.Name, picture);
             return new DominoTile(cat.Name, picturePath);
         }
 
