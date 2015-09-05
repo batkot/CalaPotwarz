@@ -1,12 +1,13 @@
 ﻿using App.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace App.Domino
 {
     public class CategoriesProvider : ICanDrawDominoTile
     {
-        private List<Category> _categories; 
+        private List<Category> _categories;
         public CategoriesProvider()
         {
             _categories = new List<Category>
@@ -26,10 +27,22 @@ namespace App.Domino
 
         public DominoTile DrawTile()
         {
-            var category = _categories[_rand.Next(_categories.Count)];
-            var picture = category.Pictures[_rand.Next(category.Pictures.Count)];
-            var picturePath = string.Format(@"gfx/pics/{0}/{1}", category.Name, picture);
-            return new DominoTile(category.Name, picturePath);
+            Category cat = _categories[_rand.Next(_categories.Count)];
+            return DrawFromCategory(cat);
+        }
+
+
+        public DominoTile DrawTileFromCategory(string categoryName)
+        {
+            Category category = _categories.First(cat => cat.Name == categoryName);
+            return DrawFromCategory(category);
+        }
+
+        private DominoTile DrawFromCategory(Category cat)
+        {
+            var picture = cat.Pictures[_rand.Next(cat.Pictures.Count)];
+            var picturePath = string.Format(@"gfx/pics/{0}/{1}", cat.Name, picture);
+            return new DominoTile(cat.Name, picturePath);
         }
 
         private static Random _rand = new Random(Guid.NewGuid().GetHashCode());
