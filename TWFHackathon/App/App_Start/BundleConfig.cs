@@ -25,6 +25,9 @@ namespace App
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-theme.css",
+                      "~/Content/animations.css",
+                      "~/Content/app.css",
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
