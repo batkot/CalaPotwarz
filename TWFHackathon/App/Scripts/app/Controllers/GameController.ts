@@ -59,6 +59,7 @@ module Controllers {
             var piece: Models.DominoPiece = this.board.takePiece(cell.x, cell.y);
             if (piece != null) {
                 this.game.addPiece(piece);
+                this.scoreKeeper.addPieceTaken();
             }
         }
 
