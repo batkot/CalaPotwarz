@@ -8,8 +8,8 @@
         public DominoPiece[] PlayerPieces { get; private set; }
         public int Height { get; private set; }
         public int Width { get; private set; }
-        public DominoTile StartTile { get; private set; }
-        public DominoTile FinishTile { get; private set; }
+        public DominoTile StartingTile { get; private set; }
+        public DominoTile FinishingTile { get; private set; }
 
         public GameModel(string id, int width, int height, DominoTile start, DominoTile finish, params DominoPiece[] playerPieces)
         {
@@ -17,8 +17,8 @@
             Width = width;
             Height = height;
             PlayerPieces = playerPieces;
-            StartTile = start;
-            FinishTile = finish;
+            StartingTile = start;
+            FinishingTile = finish;
         }
     }
 }
