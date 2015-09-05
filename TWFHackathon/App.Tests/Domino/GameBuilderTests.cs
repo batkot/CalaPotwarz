@@ -27,7 +27,7 @@ namespace App.Domino.Model
         public void Create_BuildsGameOfAGivenSize(int width, int height)
         {
             A.CallTo(() => _pathFinder.FindPath(width, height)).Returns(new SuggestedPath { MinimumRequiredPieces = 3 });
-            A.CallTo(() => _categoriesProvider.DrawTile()).Returns(new DominoTile("FAKE", "FAKE"));
+            A.CallTo(() => _categoriesProvider.DrawTile()).WithAnyArguments().Returns(new DominoTile("FAKE", "FAKE"));
 
             var builder = new GameBuilder(_categoriesProvider, _pathFinder);
 
@@ -40,12 +40,16 @@ namespace App.Domino.Model
         [Fact]
         public void CreateWithNoNoise_AddsOnlyRequiredDominoPieces()
         {
-            var beginCategory = "Begin";
-            var endCategory = "End";
-            var middleCategory = "Middle";
+
+            var beginCategory = new DominoTile("Begin", "");
+            var endCategory = new DominoTile("End", "");
+            var middleCategory = new DominoTile("Middle", "");
 
             A.CallTo(() => _pathFinder.FindPath(1, 1)).WithAnyArguments().Returns(new SuggestedPath { MinimumRequiredPieces = 2 });
-            A.CallTo(() => _categoriesProvider.DrawTile()).ReturnsNextFromSequence(new DominoTile(beginCategory, ""), new DominoTile(endCategory, ""), new DominoTile(middleCategory,""));
+            A.CallTo(() => _categoriesProvider.DrawTile()).ReturnsNextFromSequence(beginCategory, endCategory, middleCategory);
+            A.CallTo(() => _categoriesProvider.DrawTileFromCategory("Begin")).Returns(beginCategory);
+            A.CallTo(() => _categoriesProvider.DrawTileFromCategory("End")).Returns(endCategory);
+            A.CallTo(() => _categoriesProvider.DrawTileFromCategory("Middle")).Returns(middleCategory);
 
             var builder = new GameBuilder(_categoriesProvider, _pathFinder);
 
@@ -54,12 +58,12 @@ namespace App.Domino.Model
             Assert.Equal(2, game.PlayerPieces.Length);
 
             var firstPiece = game.PlayerPieces[0];
-            Assert.Equal(beginCategory, firstPiece.FirstTile.Category);
-            Assert.Equal(middleCategory, firstPiece.SecondTile.Category);
+            Assert.Equal(beginCategory.Category, firstPiece.FirstTile.Category);
+            Assert.Equal(middleCategory.Category, firstPiece.SecondTile.Category);
 
             var secondPiece = game.PlayerPieces[1];
-            Assert.Equal(middleCategory, secondPiece.FirstTile.Category);
-            Assert.Equal(endCategory, secondPiece.SecondTile.Category);
+            Assert.Equal(middleCategory.Category, secondPiece.FirstTile.Category);
+            Assert.Equal(endCategory.Category, secondPiece.SecondTile.Category);
         }
 
         [Fact]
@@ -68,7 +72,7 @@ namespace App.Domino.Model
             var minimumPathSize = 2;
             var noiseCount = 5;
             A.CallTo(() => _pathFinder.FindPath(1, 1)).WithAnyArguments().Returns(new SuggestedPath { MinimumRequiredPieces = minimumPathSize });
-            A.CallTo(() => _categoriesProvider.DrawTile()).Returns(new DominoTile("", ""));
+            A.CallTo(() => _categoriesProvider.DrawTile()).WithAnyArguments().Returns(new DominoTile("", ""));
 
             var builder = new GameBuilder(_categoriesProvider, _pathFinder);
 

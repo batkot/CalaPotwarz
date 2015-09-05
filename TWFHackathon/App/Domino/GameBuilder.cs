@@ -31,6 +31,7 @@ namespace App.Domino
 
             for (int i = 0; i < suggestedPath.MinimumRequiredPieces - 1; i++)
             {
+                lastTile = _tileProvider.DrawTileFromCategory(lastTile.Category);
                 var secondTile = _tileProvider.DrawTile();
                 minimumPathPieces.Add(new DominoPiece(lastTile, secondTile));
                 lastTile = secondTile;
