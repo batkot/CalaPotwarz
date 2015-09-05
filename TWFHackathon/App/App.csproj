@@ -167,6 +167,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Domino\BasicPathFinder.cs" />
     <Compile Include="Domino\CategoriesProvider.cs" />
     <Compile Include="Domino\GameBuilder.cs" />
     <Compile Include="Domino\ICanFindPath.cs" />
