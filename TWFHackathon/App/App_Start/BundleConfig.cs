@@ -40,6 +40,7 @@ namespace App
                       "~/Scripts/app/models/common.js",
                       "~/Scripts/app/models/game.js",
                       "~/Scripts/app/services/initializer.js",
+                      "~/Scripts/app/services/pieceplacer.js",
                       "~/Scripts/app/controllers/gamecontroller.js",
                       "~/Scripts/app/bootstrapper.js"));
         }

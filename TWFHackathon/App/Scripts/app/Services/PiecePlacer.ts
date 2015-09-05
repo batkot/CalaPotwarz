@@ -10,8 +10,9 @@
             if (firstTileOnBoard != null && firstTileOnBoard != undefined) {
                 return false;
             }
-            var secondTileX: number = piece.orientation == DominoPieceOrien
-            var secondTileOnBoard = board.getTile(firstTileX, firstTileY);
+            var secondTileX: number = piece.orientation == Models.DominoPieceOrientation.LeftRight ? firstTileX + 1 : firstTileX;
+            var secondTileY: number = piece.orientation == Models.DominoPieceOrientation.LeftRight ? firstTileY : firstTileY + 1;
+            var secondTileOnBoard = board.getTile(secondTileX, secondTileY);
             if (firstTileOnBoard != null && firstTileOnBoard != undefined) {
                 return false;
             }

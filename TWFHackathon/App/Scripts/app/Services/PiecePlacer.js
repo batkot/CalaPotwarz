@@ -8,8 +8,9 @@ var Services;
             if (firstTileOnBoard != null && firstTileOnBoard != undefined) {
                 return false;
             }
-            var secondTileX = piece.orientation == DominoPieceOrien;
-            var secondTileOnBoard = board.getTile(firstTileX, firstTileY);
+            var secondTileX = piece.orientation == Models.DominoPieceOrientation.LeftRight ? firstTileX + 1 : firstTileX;
+            var secondTileY = piece.orientation == Models.DominoPieceOrientation.LeftRight ? firstTileY : firstTileY + 1;
+            var secondTileOnBoard = board.getTile(secondTileX, secondTileY);
             if (firstTileOnBoard != null && firstTileOnBoard != undefined) {
                 return false;
             }
@@ -19,3 +20,4 @@ var Services;
     })();
     Services.DominoPiecePlacer = DominoPiecePlacer;
 })(Services || (Services = {}));
+//# sourceMappingURL=PiecePlacer.js.map
