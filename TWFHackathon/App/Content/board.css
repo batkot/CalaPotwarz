@@ -64,3 +64,15 @@
     right: 0;
     padding: 96px;
 }
+
+.board-selected-piece-wrapper ul li {
+    display: inline-block;
+    padding: 16px;
+}
+
+.rotateButton {
+    color: #fff;
+    margin: 16px;
+    font-size: 6em;
+    cursor: pointer;
+}

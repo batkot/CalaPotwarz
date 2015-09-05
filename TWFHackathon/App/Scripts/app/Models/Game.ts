@@ -134,7 +134,7 @@
     }
 
     export class DominoPiece {
-        public IsHighlighted: boolean = false;
+        public Bringing: boolean;
 
         constructor(private _firstTile: DominoTile, private _secondTile: DominoTile, private _orientation: DominoPieceOrientation, private _id: string) { };
 
@@ -152,6 +152,15 @@
 
         get Id(): string {
             return this._id;
+        }
+
+        bring(): void {
+            this.Bringing = true;
+            setTimeout(() =>
+            {
+                console.log('finito');
+                this.Bringing = false;
+            }, 2000);
         }
     }
 
