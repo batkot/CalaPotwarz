@@ -87,7 +87,7 @@
                 second_y = y;
             }
 
-            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y)) {
+            if (this.canPutOnCell(x, y) && this.canPutOnCell(second_x, second_y) && placer.canPlace(this, piece, x,y)) {
                 this.Cells[x][y].DominoTile = piece.FirstTile;
                 console.log(piece);
                 console.log(this.Cells[x][y].DominoTile);
