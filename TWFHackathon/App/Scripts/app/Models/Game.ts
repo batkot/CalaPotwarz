@@ -71,7 +71,7 @@
     }
 
     export class DominoPiece {
-        constructor(private _firstTile: DominoTile, private _secondTile: DominoTile, private _orientation: DominoPieceOrientation) { };
+        constructor(private _firstTile: DominoTile, private _secondTile: DominoTile, private _orientation: DominoPieceOrientation, private _id : string) { };
 
         get firstTile(): DominoTile {
             return this._firstTile;
@@ -83,6 +83,10 @@
 
         get orientation(): DominoPieceOrientation {
             return this._orientation;
+        }
+
+        get Id(): string {
+            return this._id;
         }
     }
 

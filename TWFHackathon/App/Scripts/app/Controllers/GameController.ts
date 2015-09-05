@@ -26,5 +26,8 @@ module Controllers {
             this.error = error;
             $("#errorModal").modal('show');
         }
+
+        putPiece(pieceId: string, x: number, y: number): void {
+        }
     }
 }
