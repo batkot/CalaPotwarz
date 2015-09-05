@@ -16,10 +16,11 @@ module Controllers {
 
         onGameCreated(game: Models.Game): void {
             console.log("GAME");
-            console.log(game);
 
             this.game = this.$scope.game = game;
             this.board = new Models.Board(game.Width, game.Height);
+
+            console.log(this.board);
         }
 
         onServerError(error: Models.Error): void {
