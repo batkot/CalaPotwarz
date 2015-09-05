@@ -76,6 +76,10 @@ module Controllers {
             console.log(this.game.SelectedPiece);
         }
 
+        onRemoveSelected() {
+            this.game.SelectedPiece = null;
+        }
+
         putPiece(piece: Models.DominoPiece, x: number, y: number): void {
             if (this.board.putPiece(piece, x, y, this.piecePlacer)) {
                 this.game.removePiece(piece);
