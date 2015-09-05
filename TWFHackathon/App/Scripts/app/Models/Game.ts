@@ -59,7 +59,7 @@
 
         public getTile(x: number, y: number): DominoTile{
             var cell = this.Cells[x][y];
-            if (cell.isEmpty())
+            if (cell == null || cell == undefined || cell.isEmpty())
                 return null;
             else
                 return cell.DominoTile;

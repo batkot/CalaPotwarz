@@ -24,9 +24,9 @@
         }
 
         private checkTileNeighbours(board : Models.Board, tile : Models.DominoTile, neighbours : any[]) : boolean{
-        
-            for (var tileXY in neighbours) {
-                var tileOnBoard = board.getTile(tileXY.x, tileXY.y);
+
+            for (var i: number = 0; i < neighbours.length; ++i) {
+                var tileOnBoard = board.getTile(neighbours[i].x, neighbours[i].y);
                 if (tileOnBoard == null) {
                     continue;
                 }
@@ -39,7 +39,7 @@
         } 
 
         private getFirstTileNeighboursCoordinates(piece: Models.DominoPiece, x: number, y: number): any[] {
-            var firstTileNeighbours: any[];
+            var firstTileNeighbours: any[] = new Array<any>();
 
             if (piece.Orientation == Models.DominoPieceOrientation.LeftRight) {
                 firstTileNeighbours[0] = { x: x - 1, y: y };
@@ -56,7 +56,7 @@
         }
 
         private getSecondTileNeighboursCoordinates(piece: Models.DominoPiece, x: number, y: number): any[] {
-            var secondTileNeighbours: any[];
+            var secondTileNeighbours: any[] = new Array<any>();;
 
             if (piece.Orientation == Models.DominoPieceOrientation.LeftRight) {
                 secondTileNeighbours[0] = { x: x + 1, y: y };
