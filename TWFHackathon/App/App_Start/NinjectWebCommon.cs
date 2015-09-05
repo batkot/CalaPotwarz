@@ -83,6 +83,7 @@ namespace App.App_Start
                 scan
                 .FromThisAssembly()
                 .SelectAllClasses()
+                .Excluding<GameBuilder>()
                 .BindAllInterfaces();
             });
         }

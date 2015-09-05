@@ -15,21 +15,17 @@
         public UpperTile: DominoTile;
         public LowerTile: DominoTile;
         public Orientation: DominoOrientation;
-        constructor(
-            ) { }
+        constructor(private _height: number, private _width: number ) {
+            this._fields = new DominoTile[_width, _height];
+        }
+
+        private _fields: DominoTile[][];
+
+        public getTile(x: number, y: number): DominoTile{
+            return this._fields[x][y];
+        }
+
+
     }
 
-    export class DominoTile {
-        public ImageUrl: string;
-        public Category: string;
-
-        constructor() { }
-    }
-
-    export enum DominoOrientation {
-        Regular,
-        Right,
-        UpsideDown,
-        Left
-    }
 }

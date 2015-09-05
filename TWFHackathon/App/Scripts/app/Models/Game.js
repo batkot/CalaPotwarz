@@ -2,8 +2,7 @@ var Models;
 (function (Models) {
     'use strict';
     var Game = (function () {
-        function Game(PlayerPieces, Id, Name, Height, Width) {
-            this.PlayerPieces = PlayerPieces;
+        function Game(Id, Name, Height, Width) {
             this.Id = Id;
             this.Name = Name;
             this.Height = Height;
@@ -12,24 +11,16 @@ var Models;
         return Game;
     })();
     Models.Game = Game;
-    var DominoPiece = (function () {
-        function DominoPiece() {
+    var Board = (function () {
+        function Board(_height, _width) {
+            this._height = _height;
+            this._width = _width;
+            this._fields = new Models.DominoTile[_width, _height];
         }
-        return DominoPiece;
+        Board.prototype.getTile = function (x, y) {
+            return this._fields[x][y];
+        };
+        return Board;
     })();
-    Models.DominoPiece = DominoPiece;
-    var DominoTile = (function () {
-        function DominoTile() {
-        }
-        return DominoTile;
-    })();
-    Models.DominoTile = DominoTile;
-    (function (DominoOrientation) {
-        DominoOrientation[DominoOrientation["Regular"] = 0] = "Regular";
-        DominoOrientation[DominoOrientation["Right"] = 1] = "Right";
-        DominoOrientation[DominoOrientation["UpsideDown"] = 2] = "UpsideDown";
-        DominoOrientation[DominoOrientation["Left"] = 3] = "Left";
-    })(Models.DominoOrientation || (Models.DominoOrientation = {}));
-    var DominoOrientation = Models.DominoOrientation;
+    Models.Board = Board;
 })(Models || (Models = {}));
-//# sourceMappingURL=Game.js.map
