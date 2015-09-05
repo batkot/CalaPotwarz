@@ -37,13 +37,13 @@ module Controllers {
             piece.bring();
         }
 
-        onPieceRotatedLeft(piece: Models.DominoPiece) {
+        onSelectedPieceRotatedLeft() {
             console.log("lewo");
-            piece = this.pieceRotator.rotateLeft(piece);
+            this.game.SelectedPiece = this.pieceRotator.rotateLeft(this.game.SelectedPiece);
         }
 
-        onPieceRotatedRight(piece: Models.DominoPiece) {
-            piece = this.pieceRotator.rotateRight(piece);
+        onSelectedPieceRotatedRight() {
+            this.game.SelectedPiece = this.pieceRotator.rotateRight(this.game.SelectedPiece);
         }
 
         putPiece(pieceId: string, x: number, y: number): void {
