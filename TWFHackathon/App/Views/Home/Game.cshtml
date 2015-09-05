@@ -1,4 +1,5 @@
 ﻿<div ng-app="app">
+    <div class="flying-header"><h2>Wybierz klocek domino z przybornika z lewej strony</h2></div>
     <div ng-controller="gameController as gc">
         <div class="board-wrapper">
             <div class="board vcenter fadeIn">
@@ -17,12 +18,22 @@
             </div>
         </div>
 
-        <div class="board-selected-piece-wrapper" ng-class="{ hidden: gc.game.SelectedPiece == null }">
-            <div class="domino-piece selected-piece enlarge domino-piece-vertical">
-                <div ng-attr="{{ gc.game.SelectedPiece.FirstTile.Category }}" class="domino-tile first-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.FirstTile.ImageUrl+')'}"></div>
-                <span class="domino-tile-separator"></span>
-                <div ng-attr="{{ gc.game.SelectedPiece.SecondTile.Category }}" class="domino-tile second-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.SecondTile.ImageUrl+')'}"></div>
-            </div>
+        <div class="board-selected-piece-wrapper non-selectable bringToView" ng-class="{ hidden: gc.game.SelectedPiece == null }">
+            <ul>
+                <li>
+                    <h1 class="rotateButton"><i class="fa fa-chevron-left" ng-click="gc.onSelectedPieceRotatedLeft()"></i></h1>
+                </li>
+                <li>
+                    <div class="domino-piece selected-piece enlarge" ng-class="{ 'domino-piece-vertical': gc.game.SelectedPiece.orientation == 1, 'domino-piece-horizontal': gc.game.SelectedPiece.orientation == 0 }">
+                        <div ng-attr="{{ gc.game.SelectedPiece.FirstTile.Category }}" class="domino-tile first-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.FirstTile.ImageUrl+')'}"></div>
+                        <span class="domino-tile-separator"></span>
+                        <div ng-attr="{{ gc.game.SelectedPiece.SecondTile.Category }}" class="domino-tile second-domino-tile" ng-style="{'background-image':'url('+gc.game.SelectedPiece.SecondTile.ImageUrl+')'}"></div>
+                    </div>
+                </li>
+                <li>
+                    <h1 class="rotateButton"><i class="fa fa-chevron-right" ng-click="gc.onSelectedPieceRotatedRight()"></i></h1>
+                </li>
+            </ul>
         </div>
 
         <div class="board-inventory">

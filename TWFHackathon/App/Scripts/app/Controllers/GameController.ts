@@ -10,7 +10,8 @@ module Controllers {
         constructor(
             private $scope: Scopes.IAppScope,
             private initializer: Services.Initializer,
-            private piecePlacer: Services.DominoPiecePlacer) {
+            private piecePlacer: Services.DominoPiecePlacer,
+            private pieceRotator: Services.DominoPieceRotator) {
 
             initializer.createGame((g) => this.onGameCreated(g), (e) => this.onServerError(e));
         }
@@ -35,7 +36,16 @@ module Controllers {
 
         onPieceSelected(piece: Models.DominoPiece) {
             this.game.SelectedPiece = piece;
-            piece.IsHighlighted = true;
+        }
+
+        onSelectedPieceRotatedLeft() {
+            this.game.SelectedPiece = this.pieceRotator.rotateLeft(this.game.SelectedPiece);
+            console.log(this.game.SelectedPiece);
+        }
+
+        onSelectedPieceRotatedRight() {
+            this.game.SelectedPiece = this.pieceRotator.rotateRight(this.game.SelectedPiece);
+            console.log(this.game.SelectedPiece);
         }
 
         putPiece(piece: Models.DominoPiece, x: number, y: number): void {

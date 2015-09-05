@@ -8,3 +8,11 @@
     position: absolute;
     visibility: collapse;
 }
+
+.non-selectable{
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}

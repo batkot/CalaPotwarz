@@ -22,9 +22,15 @@
 .domino-piece-horizontal{
     width: 128px;
     height: 64px;
+    background-image: url('gfx/blackPoint.png');
+    background-repeat: repeat-y;
+    background-position: center;
 }
 
 .domino-piece-vertical{
+    background-image: url('gfx/blackPoint.png');
+    background-repeat: repeat-x;
+    background-position: center;
     width: 64px;
     height: 128px;
 }
@@ -34,10 +40,7 @@
     border: 1px solid #fff;
     margin: 8px;
     position: relative;
-    background: #fff;
-    background-image: url('gfx/blackPoint.png');
-    background-repeat: repeat-x;
-    background-position: center;
+    background-color: #fff;
 }
 
 .domino-piece-vertical .first-domino-tile{

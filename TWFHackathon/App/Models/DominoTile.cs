@@ -32,7 +32,7 @@ namespace App.Models
 
     public enum DominoOrientation
     {
-        Vertical,
-        Horizontal
+        UppDown = 0,
+        LeftRight
     }
 }
