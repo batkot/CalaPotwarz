@@ -10,12 +10,12 @@ namespace App.Domino
             return new GameModel(Guid.NewGuid().ToString(),
                 4,
                 4,
-                new DominoTile("Animal"),
-                new DominoTile("Zavoir"),
-                new DominoPiece(new DominoTile("Zavoir"), new DominoTile("Animal")),
-                new DominoPiece(new DominoTile("Animal"), new DominoTile("Letter")),
-                new DominoPiece(new DominoTile("Zavoir"), new DominoTile("Letter")),
-                new DominoPiece(new DominoTile("People"), new DominoTile("Shoe")));
+                new DominoTile("Animal", ""),
+                new DominoTile("Zavoir", ""),
+                new DominoPiece(new DominoTile("Zavoir", "gfx/menuBck.png"), new DominoTile("Animal", "")),
+                new DominoPiece(new DominoTile("Animal", ""), new DominoTile("Letter", "")),
+                new DominoPiece(new DominoTile("Zavoir", ""), new DominoTile("Letter", "")),
+                new DominoPiece(new DominoTile("People", ""), new DominoTile("Shoe", "")));
         }
     }
 }
