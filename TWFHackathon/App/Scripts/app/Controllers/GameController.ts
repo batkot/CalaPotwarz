@@ -43,24 +43,34 @@ module Controllers {
             $("#errorModal").modal('show');
         }
 
+        tryPutSelectedPiece(cell: Models.BoardCell): void {
+            console.log(cell);
+
+            if (this.game.SelectedPiece != null) {
+                this.putPiece(this.game.SelectedPiece, cell.x, cell.y);
+           } 
+        }
+
         onPieceSelected(piece: Models.DominoPiece) {
             this.game.SelectedPiece = piece;
         }
 
-        onSelectedPieceRotatedLeft() {
+        onSelectedPieceRotatedRight() {
             this.game.SelectedPiece = this.pieceRotator.rotateLeft(this.game.SelectedPiece);
             console.log(this.game.SelectedPiece);
         }
 
-        onSelectedPieceRotatedRight() {
+        onSelectedPieceRotatedLeft() {
             this.game.SelectedPiece = this.pieceRotator.rotateRight(this.game.SelectedPiece);
             console.log(this.game.SelectedPiece);
         }
 
-        putPiece(pieceId: string, x: number, y: number): void {
-            var piece = this.game.getPiece(pieceId);
+        putPiece(piece: Models.DominoPiece, x: number, y: number): void {
             if (this.board.putPiece(piece, x, y, this.piecePlacer)) {
-                this.game.removePiece(pieceId);
+                this.game.SelectedPiece = null;
+                this.board.IsSolved = this.board.isSolved();
+                if (this.board.IsSolved)
+                    console.log("solved");
             }
         }
     }

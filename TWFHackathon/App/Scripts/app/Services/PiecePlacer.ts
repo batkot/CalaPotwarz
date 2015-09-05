@@ -8,15 +8,15 @@
             
             var firstTileNeighbours: any[] = this.getFirstTileNeighboursCoordinates(piece, firstTileX, firstTileY);
             
-            if (!this.checkTileNeighbours(board, piece.firstTile, firstTileNeighbours)) {
+            if (!this.checkTileNeighbours(board, piece.FirstTile, firstTileNeighbours)) {
                 return false;
             }
 
-            var secondTileX: number = piece.orientation == Models.DominoPieceOrientation.LeftRight ? firstTileX + 1 : firstTileX;
-            var secondTileY: number = piece.orientation == Models.DominoPieceOrientation.LeftRight ? firstTileY : firstTileY + 1;
+            var secondTileX: number = piece.Orientation == Models.DominoPieceOrientation.LeftRight ? firstTileX + 1 : firstTileX;
+            var secondTileY: number = piece.Orientation == Models.DominoPieceOrientation.LeftRight ? firstTileY : firstTileY + 1;
             
             var secondTileNeighbours: any[] = this.getSecondTileNeighboursCoordinates(piece, secondTileX, secondTileY);
-            if (!this.checkTileNeighbours(board, piece.secondTile, secondTileNeighbours)) {
+            if (!this.checkTileNeighbours(board, piece.SecondTile, secondTileNeighbours)) {
                 return false;
             }
             
@@ -41,7 +41,7 @@
         private getFirstTileNeighboursCoordinates(piece: Models.DominoPiece, x: number, y: number): any[] {
             var firstTileNeighbours: any[];
 
-            if (piece.orientation == Models.DominoPieceOrientation.LeftRight) {
+            if (piece.Orientation == Models.DominoPieceOrientation.LeftRight) {
                 firstTileNeighbours[0] = { x: x - 1, y: y };
                 firstTileNeighbours[1] = { x: x, y: y - 1 };
                 firstTileNeighbours[2] = { x: x, y: y + 1 };
@@ -58,7 +58,7 @@
         private getSecondTileNeighboursCoordinates(piece: Models.DominoPiece, x: number, y: number): any[] {
             var secondTileNeighbours: any[];
 
-            if (piece.orientation == Models.DominoPieceOrientation.LeftRight) {
+            if (piece.Orientation == Models.DominoPieceOrientation.LeftRight) {
                 secondTileNeighbours[0] = { x: x + 1, y: y };
                 secondTileNeighbours[1] = { x: x, y: y - 1 };
                 secondTileNeighbours[2] = { x: x, y: y + 1 };
