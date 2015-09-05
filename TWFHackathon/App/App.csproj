@@ -167,6 +167,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Domino\CategoriesProvider.cs" />
+    <Compile Include="Domino\MockGameCreator.cs" />
     <Compile Include="Domino\ICanCreateGame.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
