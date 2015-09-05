@@ -6,7 +6,6 @@ module Controllers {
         public error: Models.Error;
         public game: Models.Game;
         public board: Models.Board;
-        public size: string;
 
         constructor(
             private $scope: Scopes.IAppScope,
@@ -20,8 +19,11 @@ module Controllers {
         onGameCreated(game: Models.Game): void {
             console.log("GAME");
 
+            //dafaq
             this.game = this.$scope.game = game;
-            this.board = new Models.Board(game.Width, game.Height);
+            var startingPiece = new Models.DominoTile(game.StartingTile.Category, game.StartingTile.ImageUrl);
+            var finishingPiece = new Models.DominoTile(game.FinishingTile.Category, game.FinishingTile.ImageUrl);
+            this.board = new Models.Board(game.Width, game.Height, startingPiece, finishingPiece);
 
             var playerPieces: Models.DominoPiece[] = new Array<Models.DominoPiece>();
             for (var i: number = 0; i < game.PlayerPieces.length; ++i) {
@@ -34,7 +36,7 @@ module Controllers {
                 playerPieces.push(newPiece);
             }
 
-            this.game = this.$scope.game = new Models.Game(null, playerPieces, game.Id, game.Name, game.Height, game.Width);
+            this.game = this.$scope.game = new Models.Game(null, playerPieces, game.Id, game.Name, game.Height, game.Width, startingPiece, finishingPiece);
             
             console.log(this.game);
         }
@@ -68,6 +70,7 @@ module Controllers {
 
         putPiece(piece: Models.DominoPiece, x: number, y: number): void {
             if (this.board.putPiece(piece, x, y, this.piecePlacer)) {
+                this.game.removePiece(piece);
                 this.game.SelectedPiece = null;
                 this.board.IsSolved = this.board.isSolved();
                 if (this.board.IsSolved)
