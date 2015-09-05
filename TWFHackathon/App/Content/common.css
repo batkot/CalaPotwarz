@@ -16,3 +16,7 @@
     user-select:none;
     -o-user-select:none;
 }
+
+.center-text{
+    text-align: center;
+}

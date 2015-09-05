@@ -3,7 +3,9 @@
     <div ng-controller="gameController as gc">
         <div class="board-wrapper">
             <div class="board vcenter fadeIn">
-                <div class="startImage" ng-style="{'background-image':'url('+cell.DominoTile.ImageUrl+')'}"></div>
+                <div class="center-text">
+                    <img class="enlarge" ng-src="{{ gc.board.StartTile.ImageUrl }}" ng-style="{ 'margin-right': gc.board.Cells[0].length * 64 + 'px'}" />
+                </div>
                 <ul class="board-row" data-ng-repeat="row in gc.board.Cells">
                     <li>
                         <ul class="board-row-cells-collection">
@@ -15,8 +17,10 @@
                         </ul>
                     </li>
                 </ul>
-                <div class="endImage" ng-style="{'background-image':'url('+cell.DominoTile.ImageUrl+')'}"></div>
                 <div class="clearfix"></div>
+                <div class="center-text">
+                    <img class="enlarge" ng-src="{{ gc.board.FinishTile.ImageUrl }}" ng-style="{ 'margin-left': gc.board.Cells[0].length * 64 + 'px'}" />
+                </div>
             </div>
         </div>
 
